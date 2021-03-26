@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "storybook": "start-storybook -p 6006",
-    "storybook:noCache": "start-storybook -p 6006 --no-manager-cache",
+    "storybook": "start-storybook -p 9000",
+    "storybook:noCache": "start-storybook -p 9000 --no-manager-cache",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
@@ -43,6 +43,7 @@
     "eslint-plugin-react": "^7.23.1",
     "eslint-plugin-react-hooks": "^4.2.0",
     "prettier": "^2.2.1",
+    "storybook-css-modules-preset": "^1.0.7",
     "style-loader": "^2.0.0",
     "typescript": "^4.2.3"
   }
