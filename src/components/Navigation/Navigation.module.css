@@ -1,7 +1,7 @@
 .navigation {
   display: flex;
   justify-content: flex-end;
-  padding: var(--space--base) var(--space--large);
+  padding: 0 var(--space--large);
   background: var(--color--background);
   text-transform: uppercase;
   color: var(--color--primary);
