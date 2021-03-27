@@ -18,7 +18,7 @@ export function Navigation() {
     <nav className={styles.navigation}>
       <ul className={styles.list}>
         {navItems.map((item) => (
-          <li className={styles.item}>
+          <li className={styles.item} key={item.title}>
             <NavigationLink to={item.to} title={item.title} />
           </li>
         ))}
