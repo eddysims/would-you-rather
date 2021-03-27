@@ -1,0 +1,19 @@
+.navigation {
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--space--base) var(--space--large);
+  background: var(--color--background);
+  text-transform: uppercase;
+  color: var(--color--primary);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+.item {
+  margin-left: var(--space--base)
+}
