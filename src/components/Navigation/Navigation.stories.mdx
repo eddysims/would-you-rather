@@ -1,7 +1,7 @@
 import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs/blocks";
-import { Navigation } from './Navigation'
+import { Navigation } from "./Navigation";
 
-<Meta title="navigation/Navigation" component={Navigation}/>
+<Meta title="navigation/Navigation" component={Navigation} />
 
 # Navigation
 
@@ -20,11 +20,7 @@ import { Navigation } from "@/components/Navigation";
 ## Example
 
 <Canvas>
-  <Story
-    name="Default"
-    argTypes={{ icon: { table: { disable: true } } }}
-  >
+  <Story name="Default" argTypes={{ icon: { table: { disable: true } } }}>
     {(args) => <Navigation {...args} />}
   </Story>
 </Canvas>
-

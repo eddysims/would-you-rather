@@ -13,5 +13,3 @@ yarn storybook
 ## Starting the project
 
 To start the project run `yarn dev`.
-
-
