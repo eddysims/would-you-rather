@@ -1,0 +1,20 @@
+.link {
+  display: inline-block;
+  padding: var(--space--base) var(--space--smaller);
+  font-family: var(--font-family--display);
+  color: var(--color--primary);
+  text-decoration: none;
+  box-shadow: 0 0 0 0 var(--color--secondary) inset;
+  transition: box-shadow 300ms;
+  font-size: var(--font-size--small);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.link:hover {
+  box-shadow: 0 3px 0 0 var(--color--secondary) inset;
+}
+
+.link:focus {
+  box-shadow: 0 3px 0 0 var(--color--secondary) inset;
+}

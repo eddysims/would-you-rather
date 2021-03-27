@@ -1,0 +1,9 @@
+:root {
+  --font-family--base: 'Lora', serif;
+  --font-family--display: 'Krub', sans-serif;
+}
+
+:root {
+  --font-size--small: calc(var(--font-size--base) * 0.9375); 
+  --font-size--base: 16px;
+}

@@ -1,4 +1,6 @@
+import { withNextRouter } from "storybook-addon-next-router";
 import wouldYouRatherTheme from "./theme";
+
 import "../src/styles/globals.css";
 
 export const parameters = {
@@ -7,3 +9,5 @@ export const parameters = {
     theme: wouldYouRatherTheme,
   },
 };
+
+export const decorators = [withNextRouter];

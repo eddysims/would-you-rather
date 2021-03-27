@@ -1,0 +1,26 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs/blocks";
+import { NavigationLink } from "./NavigationLink";
+
+<Meta title="navigation/NavigationLink" component={NavigationLink} />
+
+# NavigationLink
+
+A `NavigationLink` is an item that will be listed in the `Navigation` component. This should not be used outside of the `Navigation` component.
+
+## Usage
+
+```ts
+import { NavigationLink } from "@/components/NavigationLink";
+```
+
+## Props
+
+<ArgsTable of={NavigationLink} />
+
+## Example
+
+<Canvas>
+  <Story name="Default" args={{title: 'Navigation Link', to: '/'}}>
+    {(args) => <NavigationLink {...args} />}
+  </Story>
+</Canvas>
