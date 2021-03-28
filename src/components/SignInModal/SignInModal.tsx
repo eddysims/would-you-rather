@@ -1,9 +1,8 @@
-import { useSession, signIn } from "next-auth/client";
+import { signIn } from "next-auth/client";
 import { Modal } from "@/components/Modal";
 import { Heading } from "@/components/Heading";
 import { Button } from "@/components/Button";
 
-import { useEffect } from "react";
 import styles from "./SignInModal.module.css";
 
 interface SignInModalProps {
@@ -18,18 +17,9 @@ interface SignInModalProps {
 }
 
 export function SignInModal({ open, onClose }: SignInModalProps) {
-  const [session] = useSession();
-
-  useEffect(() => {
-    if (session) {
-      onClose();
-    }
-  }, [session]);
-
   return (
     <Modal open={open} onClose={onClose}>
       <div className={styles.content}>
-        {session && open && "FOOOBO"}
         <Heading>Sign in to submit a question</Heading>
         <div className={styles.providers}>
           <Button title="Sign in with Github" onClick={handleGithubSignIn} />
@@ -39,8 +29,10 @@ export function SignInModal({ open, onClose }: SignInModalProps) {
     </Modal>
   );
 
-  function handleGithubSignIn() {
-    signIn("github");
+  async function handleGithubSignIn() {
+    await signIn("github", {
+      callbackUrl: `${process.env.NEXT_PUBLIC_URL}/dashboard`,
+    });
   }
 
   // function handleGoogleSignIn() {
