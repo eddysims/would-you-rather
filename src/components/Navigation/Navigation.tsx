@@ -1,25 +1,35 @@
+import { XOR } from "ts-xor";
 import { NavigationLink } from "@/components/NavigationLink";
 
 import styles from "./Navigation.module.css";
 
-export function Navigation() {
-  const navItems = [
-    {
-      to: "/signin",
-      title: "Sign In",
-    },
-    {
-      to: "/signin",
-      title: "Submit a question",
-    },
-  ];
+interface NavigatioBaseItem {
+  readonly title: string;
+}
 
+interface NavigationLinkItem extends NavigatioBaseItem {
+  readonly to: string;
+}
+
+interface NavigationActionItem extends NavigatioBaseItem {
+  onClick(): void;
+}
+
+type NavigationItem = XOR<NavigationLinkItem, NavigationActionItem>;
+
+interface NavigationProps {
+  readonly items: NavigationItem[];
+}
+
+export function Navigation({ items }: NavigationProps) {
   return (
     <nav className={styles.navigation}>
       <ul className={styles.list}>
-        {navItems.map((item) => (
+        {items.map((item) => (
           <li className={styles.item} key={item.title}>
-            <NavigationLink to={item.to} title={item.title} />
+            {/* disabling prop spreading here as this is a very valid use case */}
+            {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+            <NavigationLink {...item} />
           </li>
         ))}
       </ul>

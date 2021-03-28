@@ -20,7 +20,21 @@ import { Navigation } from "@/components/Navigation";
 ## Example
 
 <Canvas>
-  <Story name="Default" argTypes={{ icon: { table: { disable: true } } }}>
+  <Story
+    name="Default"
+    args={{
+      items: [
+        {
+          title: "Item 1",
+          to: "/item-1",
+        },
+        {
+          title: "Item 2",
+          onClick: () => alert("Item 2"),
+        },
+      ],
+    }}
+  >
     {(args) => <Navigation {...args} />}
   </Story>
 </Canvas>
