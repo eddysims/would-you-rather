@@ -1,0 +1,26 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs/blocks";
+import { SignInModal } from ".";
+
+<Meta title="components/SignInModal" component={SignInModal} />
+
+# SignInModal
+
+The `SignInModal` should be used whenever we want to prompt a user to sign into their account.
+
+## Usage
+
+```tsx
+import { SignInModal } from "@/components/SignInModal";
+```
+
+## Props
+
+<ArgsTable component={SignInModal} />
+
+## Example
+
+<Canvas>
+  <Story name="Default" args={{ open: false }}>
+    {(args) => <SignInModal {...args} />}
+  </Story>
+</Canvas>

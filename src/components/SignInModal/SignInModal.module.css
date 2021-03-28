@@ -1,0 +1,11 @@
+.content {
+  text-align: center;;
+}
+
+.providers {
+  margin-top: var(--space--large);
+}
+
+.providers * {
+  margin-bottom: var(--space--base);
+}
