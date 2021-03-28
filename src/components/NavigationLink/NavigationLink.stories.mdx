@@ -17,10 +17,28 @@ import { NavigationLink } from "@/components/NavigationLink";
 
 <ArgsTable of={NavigationLink} />
 
-## Example
+## Linking to a page
+
+The most appropriate way to use the `NavigationLink` component is with the `to` prop.
 
 <Canvas>
-  <Story name="Default" args={{ title: "Navigation Link", to: "/" }}>
+  <Story name="Using a link" args={{ title: "Go home", to: "/" }}>
+    {(args) => <NavigationLink {...args} />}
+  </Story>
+</Canvas>
+
+## Performing an action
+
+If you need to perform an action when clicking the link, you can use the `onClick` handler.
+
+<Canvas>
+  <Story
+    name="Performing an action"
+    args={{
+      title: "Buy Something",
+      onClick: () => alert("Shut up and take my money!"),
+    }}
+  >
     {(args) => <NavigationLink {...args} />}
   </Story>
 </Canvas>

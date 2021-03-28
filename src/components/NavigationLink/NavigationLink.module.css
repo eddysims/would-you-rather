@@ -1,4 +1,7 @@
 .link {
+  appearance: none;
+  background: none;
+  border: none;
   display: inline-block;
   padding: var(--space--base) var(--space--smaller);
   font-family: var(--font-family--display);
@@ -9,6 +12,11 @@
   font-size: var(--font-size--small);
   text-transform: uppercase;
   font-weight: 500;
+  cursor: pointer;
+}
+
+.link:active {
+  outline: none;
 }
 
 .link:hover {

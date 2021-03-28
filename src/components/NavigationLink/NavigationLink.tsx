@@ -1,22 +1,49 @@
 import NextLink from "next/link";
+import { XOR } from "ts-xor";
 
 import styles from "./NavigationLink.module.css";
 
-interface NavigationLinkProps {
+interface NavigationLinkBaseProps {
   /**
-   * The url where the component should link to.
-   */
-  readonly to: string;
-  /**
-   * The text that will appear within the navigation link
+   * The text that will appear within the navigation link.
    */
   readonly title: string;
 }
+interface NavigationLinkLinkProps extends NavigationLinkBaseProps {
+  /**
+   * The URL where the link should go to.
+   */
+  readonly to: string;
+}
 
-export function NavigationLink({ to, title }: NavigationLinkProps) {
+interface NavigationLinkActionProps extends NavigationLinkBaseProps {
+  /**
+   * An action to perform onClick if you are not sending to a URL.
+   */
+  onClick(): void;
+}
+
+type NavigationLinkProps = XOR<
+  NavigationLinkLinkProps,
+  NavigationLinkActionProps
+>;
+
+export function NavigationLink({ to, title, onClick }: NavigationLinkProps) {
+  if (to) {
+    return (
+      <NextLink href={to} passHref>
+        <a className={styles.link}>{title}</a>
+      </NextLink>
+    );
+  }
+
   return (
-    <NextLink href={to} passHref>
-      <a className={styles.link}>{title}</a>
-    </NextLink>
+    <button type="button" onClick={handleClick} className={styles.link}>
+      {title}
+    </button>
   );
+
+  function handleClick() {
+    onClick();
+  }
 }
