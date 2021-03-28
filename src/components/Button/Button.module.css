@@ -1,0 +1,23 @@
+.button {
+  appearance: none;
+  border: none;
+  background: none;
+  display: inline-block;
+  color: var(--color--primary);
+  font-family: var(--font-family--display);
+  font-size: var(--font-size--small);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: var(--space--small) var(--space--medium);
+  border: 2px solid var(--color--primary);
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background 300ms, color 300ms;
+  background: transparent
+}
+
+.button:hover,
+.button:focus {
+  background: var(--color--primary);
+  color: var(--color--background);
+}

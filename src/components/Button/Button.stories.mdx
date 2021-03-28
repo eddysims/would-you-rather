@@ -1,0 +1,32 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs/blocks";
+import { Button } from ".";
+
+<Meta title="components/Button" component={Button} />
+
+# Button
+
+A `Button` is a typical button.
+
+## Usage
+
+```tsx
+import { Button } from "@/components/Button";
+```
+
+## Props
+
+<ArgsTable component={Button} />
+
+## Example
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      title: "Shop me some coffee",
+      onClick: () => alert("mmm... coffee"),
+    }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+</Canvas>
