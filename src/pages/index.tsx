@@ -1,10 +1,14 @@
 import Head from "next/head";
 import { Navigation } from "@/components/Navigation";
 import { Logo } from "@/components/Logo";
+import { Button } from "@/components/Button";
+import { signIn, signOut, useSession } from "next-auth/client";
 
 import styles from "./index.module.css";
 
 export default function Home() {
+  const [session] = useSession();
+
   return (
     <>
       <Head>
@@ -15,6 +19,12 @@ export default function Home() {
       <div className={styles.logoContainer}>
         <Logo size="large" />
       </div>
+      {session && JSON.stringify(session.user.name)}
+      {session ? (
+        <Button onClick={signOut} title="Sign out" />
+      ) : (
+        <Button onClick={() => signIn("github")} title="Sign in with github" />
+      )}
     </>
   );
 }
