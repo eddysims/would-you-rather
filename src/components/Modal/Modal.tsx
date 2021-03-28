@@ -51,5 +51,9 @@ export function Modal({
     onClose();
   }
 
+  if (typeof window === "undefined") {
+    return <></>;
+  }
+
   return createPortal(modal, document.body);
 }
