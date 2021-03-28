@@ -28,3 +28,16 @@
   background: rgba(0,0,0,0.7);
   backdrop-filter: blur(1px);
 }
+
+.closeIcon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateY(-125%);
+
+  appearance: none;
+  background: none;
+  border: none;
+  color: var(--color--text);
+  cursor: pointer;
+}

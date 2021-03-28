@@ -2,6 +2,8 @@ import { PropsWithChildren } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
+import { Icon } from "@/components/Icon";
+
 import styles from "./Modal.module.css";
 
 interface ModalProps {
@@ -23,13 +25,16 @@ export function Modal({
             animate={{ opacity: 1, top: "50%" }}
             exit={{ opacity: 0 }}
           >
-            <div className={styles.inner}>
-              {children}
-              <hr />
-              <button type="button" onClick={handleClose}>
-                Do onClose
-              </button>
-            </div>
+            <div className={styles.inner}>{children}</div>
+            {/* TODO: change this to a Button component when available */}
+            <button
+              className={styles.closeIcon}
+              type="button"
+              onClick={handleClose}
+              aria-label="Close modal"
+            >
+              <Icon icon="X" />
+            </button>
           </motion.div>
           <motion.div
             className={styles.overlay}

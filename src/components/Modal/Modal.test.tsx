@@ -16,10 +16,12 @@ it("opens a modal", async () => {
 
 it("calls the onClose handler", async () => {
   const changeHandler = jest.fn();
-  const { getByText } = render(<MockModal onClose={changeHandler} />);
+  const { getByText, getByLabelText } = render(
+    <MockModal onClose={changeHandler} />
+  );
 
   fireEvent.click(getByText("Button"));
-  fireEvent.click(getByText("Do onClose"));
+  fireEvent.click(getByLabelText("Close modal"));
 
   expect(changeHandler).toHaveBeenCalledTimes(1);
 });

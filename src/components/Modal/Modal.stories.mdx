@@ -26,11 +26,9 @@ import { Modal } from "@/components/Modal";
       const [open, setOpen] = useState(true);
       return (
         <>
-          <button onClick={toggleModal}>
-            Toggle Modal {open ? "open" : "no"}
-          </button>
+          <button onClick={toggleModal}>Toggle Modal</button>
           <Modal open={open} onClose={toggleModal}>
-            I AM A MODAL
+            Modal content
           </Modal>
         </>
       );
