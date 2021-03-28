@@ -1,0 +1,42 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs/blocks";
+import { useState } from "react";
+import { Modal } from ".";
+
+<Meta title="components/Modal" component={Modal} />
+
+# Modal
+
+A `Modal` is an overlay that allows users to view, information that doesn't require a page to be built. It also prevent users from interacting with the rest of the page until a specific action is taken.
+
+## Usage
+
+```tsx
+import { Modal } from "@/components/Modal";
+```
+
+## Props
+
+<ArgsTable component={Modal} />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      const [open, setOpen] = useState(true);
+      return (
+        <>
+          <button onClick={toggleModal}>
+            Toggle Modal {open ? "open" : "no"}
+          </button>
+          <Modal open={open} onClose={toggleModal}>
+            I AM A MODAL
+          </Modal>
+        </>
+      );
+      function toggleModal() {
+        setOpen(!open);
+      }
+    }}
+  </Story>
+</Canvas>
