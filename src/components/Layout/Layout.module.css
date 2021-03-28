@@ -1,0 +1,10 @@
+.main {
+  margin: var(--space--large) 0;
+  padding: 0 var(--space--medium);
+}
+
+.container {
+  width: 100%;
+  max-width: calc(var(--space--base) * 72);
+  margin: 0 auto;
+}
