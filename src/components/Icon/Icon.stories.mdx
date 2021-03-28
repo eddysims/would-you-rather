@@ -1,0 +1,26 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs/blocks";
+import { Icon } from ".";
+
+<Meta title="components/Icon" component={Icon} />
+
+# Icon
+
+`Icon` is a wrapper around [react-feather](https://www.npmjs.com/package/react-feather) which uses [Feather Icons](https://feathericons.com/).
+
+## Usage
+
+```tsx
+import { Icon } from "@/components/Icon";
+```
+
+## Props
+
+<ArgsTable component={Icon} />
+
+## Example
+
+<Canvas>
+  <Story name="Default" args={{ icon: "Coffee" }}>
+    {(args) => <Icon {...args} />}
+  </Story>
+</Canvas>
