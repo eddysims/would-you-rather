@@ -22,3 +22,13 @@ import { Logo } from "@/components/Logo";
 <Canvas>
   <Story name="Default">{(args) => <Logo {...args} />}</Story>
 </Canvas>
+
+## As an icon
+
+You can render the `Logo` as just the icon by setting the `variation="icon"` prop.
+
+<Canvas>
+  <Story name="As an icon" args={{ variation: "icon" }}>
+    {(args) => <Logo {...args} />}
+  </Story>
+</Canvas>
