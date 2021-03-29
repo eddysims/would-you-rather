@@ -17,3 +17,19 @@ it("calls onClick handler", () => {
 
   expect(clickHandler).toHaveBeenCalledTimes(1);
 });
+
+it("should have the loading class if loading", () => {
+  const { getByText } = render(
+    <Button title="Foo" loading onClick={jest.fn()} />
+  );
+
+  expect(getByText("Foo").classList).toContain("loading");
+});
+
+it("should be disabled if loading", () => {
+  const { getByText } = render(
+    <Button title="Foo" loading onClick={jest.fn()} />
+  );
+
+  expect(getByText("Foo")).toBeDisabled();
+});

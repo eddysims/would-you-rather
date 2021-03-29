@@ -30,3 +30,22 @@ import { Button } from "@/components/Button";
     {(args) => <Button {...args} />}
   </Story>
 </Canvas>
+
+## Loading state
+
+You can indicate that a button is a loading state by setting the `loading` prop.
+
+When a button is `loading` it will not be interactive to the user.
+
+<Canvas>
+  <Story
+    name="Loading state"
+    args={{
+      title: "Load the coffee machine",
+      loading: true,
+      onClick: () => alert("coffee loading"),
+    }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+</Canvas>
