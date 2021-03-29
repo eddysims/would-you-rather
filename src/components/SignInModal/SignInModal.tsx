@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { signIn } from "next-auth/client";
 import { Modal } from "@/components/Modal";
 import { Heading } from "@/components/Heading";
@@ -17,20 +18,27 @@ interface SignInModalProps {
 }
 
 export function SignInModal({ open, onClose }: SignInModalProps) {
+  const [githubLoading, setGithubLoading] = useState(false);
+
   return (
     <Modal open={open} onClose={onClose}>
       <div className={styles.content}>
         <Heading>Sign in to submit a question</Heading>
         <div className={styles.providers}>
-          <Button title="Sign in with Github" onClick={handleGithubSignIn} />
+          <Button
+            title="Sign in with Github"
+            loading={githubLoading}
+            onClick={handleGithubSignIn}
+          />
           {/* <Button title="Sign in with Google" onClick={handleGoogleSignIn} /> */}
         </div>
       </div>
     </Modal>
   );
 
-  async function handleGithubSignIn() {
-    await signIn("github", {
+  function handleGithubSignIn() {
+    setGithubLoading(true);
+    signIn("github", {
       callbackUrl: `${process.env.NEXT_PUBLIC_URL}/dashboard`,
     });
   }
