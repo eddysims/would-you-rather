@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { Protected } from "@/components/Protected";
 import Head from "next/head";
 
 function Dashboard() {
@@ -8,7 +9,9 @@ function Dashboard() {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>Your Profile</Layout>
+      <Layout>
+        <Protected>Your Profile</Protected>
+      </Layout>
     </>
   );
 }

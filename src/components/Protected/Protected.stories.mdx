@@ -1,0 +1,24 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs/blocks";
+import { Protected } from ".";
+
+<Meta title="components/Protected" component={Protected} />
+
+# Protected
+
+The `Protected` component is used to protect content that is meant to be hidden by a `session`.
+
+## Usage
+
+```tsx
+import { Protected } from "@/components/Protected";
+```
+
+## Props
+
+<ArgsTable component={Protected} />
+
+## Example
+
+<Canvas>
+  <Story name="Default">{(args) => <Protected {...args}>Foo</Protected>}</Story>
+</Canvas>
