@@ -19,6 +19,7 @@ interface SignInModalProps {
 
 export function SignInModal({ open, onClose }: SignInModalProps) {
   const [githubLoading, setGithubLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
 
   return (
     <Modal open={open} onClose={onClose}>
@@ -26,11 +27,15 @@ export function SignInModal({ open, onClose }: SignInModalProps) {
         <Heading>Sign in to submit a question</Heading>
         <div className={styles.providers}>
           <Button
+            title="Sign in with Google"
+            loading={googleLoading}
+            onClick={handleGoogleSignIn}
+          />
+          <Button
             title="Sign in with Github"
             loading={githubLoading}
             onClick={handleGithubSignIn}
           />
-          {/* <Button title="Sign in with Google" onClick={handleGoogleSignIn} /> */}
         </div>
       </div>
     </Modal>
@@ -43,7 +48,10 @@ export function SignInModal({ open, onClose }: SignInModalProps) {
     });
   }
 
-  // function handleGoogleSignIn() {
-  //   alert("Google sign in coming soon");
-  // }
+  function handleGoogleSignIn() {
+    setGoogleLoading(true);
+    signIn("google", {
+      callbackUrl: `${process.env.NEXT_PUBLIC_URL}/dashboard`,
+    });
+  }
 }
