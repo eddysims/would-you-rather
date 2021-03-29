@@ -1,0 +1,22 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs/blocks";
+import { AccessDenied } from ".";
+
+<Meta title="layouts/AccessDenied" component={AccessDenied} />
+
+# AccessDenied
+
+## Usage
+
+```tsx
+import { AccessDenied } from "@/components/AccessDenied";
+```
+
+## Props
+
+<ArgsTable component={AccessDenied} />
+
+## Example
+
+<Canvas>
+  <Story name="Default">{(args) => <AccessDenied {...args} />}</Story>
+</Canvas>
