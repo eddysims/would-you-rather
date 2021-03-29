@@ -1,6 +1,6 @@
 .navigation {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 0 var(--space--large);
   background: var(--color--background);
   text-transform: uppercase;
@@ -16,4 +16,8 @@
 
 .item {
   margin-left: var(--space--base)
+}
+
+.logo {
+  margin-top: var(--space--base)
 }

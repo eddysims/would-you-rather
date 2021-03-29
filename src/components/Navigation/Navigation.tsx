@@ -1,4 +1,6 @@
+import NextLink from "next/link";
 import { XOR } from "ts-xor";
+import { Logo } from "@/components/Logo";
 import { NavigationLink } from "@/components/NavigationLink";
 
 import styles from "./Navigation.module.css";
@@ -24,6 +26,12 @@ interface NavigationProps {
 export function Navigation({ items }: NavigationProps) {
   return (
     <nav className={styles.navigation}>
+      <NextLink href="/" passHref>
+        <a className={styles.logo}>
+          <Logo size="tiny" variation="icon" />
+        </a>
+      </NextLink>
+
       <ul className={styles.list}>
         {items.map((item) => (
           <li className={styles.item} key={item.title}>
