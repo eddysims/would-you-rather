@@ -58,7 +58,8 @@ export function Layout({ children }: PropsWithChildren<unknown>) {
     if (session) {
       items.push({
         title: "Sign out",
-        onClick: signOut,
+        onClick: () =>
+          signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_URL}` }),
       });
     }
 

@@ -6,8 +6,6 @@ import { AccessDenied } from "@/components/AccessDenied";
 export function Protected({ children }: PropsWithChildren<unknown>) {
   const [session, loading] = useSession();
 
-  console.log("LOADING", loading);
-
   if (loading) {
     return <Icon icon="Loader" />;
   }
