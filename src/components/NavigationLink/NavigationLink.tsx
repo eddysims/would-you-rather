@@ -1,5 +1,7 @@
 import NextLink from "next/link";
 import { XOR } from "ts-xor";
+import classnames from "classnames";
+import { useRouter } from "next/router";
 
 import styles from "./NavigationLink.module.css";
 
@@ -29,16 +31,22 @@ type NavigationLinkProps = XOR<
 >;
 
 export function NavigationLink({ to, title, onClick }: NavigationLinkProps) {
+  const router = useRouter();
+
+  const buttonClass = classnames(styles.link, {
+    [styles.active]: router.pathname === to,
+  });
+
   if (to) {
     return (
       <NextLink href={to} passHref>
-        <a className={styles.link}>{title}</a>
+        <a className={buttonClass}>{title}</a>
       </NextLink>
     );
   }
 
   return (
-    <button type="button" onClick={handleClick} className={styles.link}>
+    <button type="button" onClick={handleClick} className={buttonClass}>
       {title}
     </button>
   );

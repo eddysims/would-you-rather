@@ -1,10 +1,11 @@
 .navigation {
+  border-bottom: 1px solid var(--color--grey);
+}
+
+.container {
   display: flex;
   justify-content: space-between;
-  padding: 0 var(--space--large);
-  background: var(--color--background);
-  text-transform: uppercase;
-  color: var(--color--primary);
+  align-items: center;
 }
 
 .list {
@@ -16,8 +17,4 @@
 
 .item {
   margin-left: var(--space--base)
-}
-
-.logo {
-  margin-top: var(--space--base)
 }

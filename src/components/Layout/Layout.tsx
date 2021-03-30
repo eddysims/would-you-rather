@@ -49,12 +49,6 @@ export function Layout({ children }: PropsWithChildren<unknown>) {
       });
     }
 
-    items.push({
-      title: "Submit A Question",
-      to: session ? dashboardUrl : undefined,
-      onClick: session ? undefined : handleOpenModal,
-    });
-
     if (session) {
       items.push({
         title: "Sign out",
