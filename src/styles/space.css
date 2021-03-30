@@ -4,4 +4,5 @@
   --space--base: 16px;
   --space--medium: calc(var(--space--base) * 1.5);
   --space--large: calc(var(--space--base) * 2);
+  --space--largest: calc(var(--space--base) * 4);
 }

@@ -2,6 +2,7 @@
 @import './colors.css';
 @import './space.css';
 @import './fonts.css';
+@import './radii.css';
 
 html {
   box-sizing: border-box;

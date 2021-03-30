@@ -1,0 +1,27 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs/blocks";
+import { Avatar } from ".";
+
+<Meta title="components/Avatar" component={Avatar} />
+
+# Avatar
+
+## Usage
+
+```tsx
+import { Avatar } from "@/components/Avatar";
+```
+
+## Props
+
+<ArgsTable component={Avatar} />
+
+## Example
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{ imageUrl: "https://avatars.githubusercontent.com/u/46460840?v=4" }}
+  >
+    {(args) => <Avatar {...args} />}
+  </Story>
+</Canvas>

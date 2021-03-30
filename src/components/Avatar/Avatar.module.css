@@ -1,0 +1,14 @@
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color--primary);
+  width: var(--space--largest);
+  height: var(--space--largest);
+  border-radius: var(--radii--circle);
+  text-transform: uppercase;
+  background-color: var(--color--grey);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
