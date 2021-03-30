@@ -31,7 +31,7 @@ module.exports = {
   },
   rules: {
     "no-use-before-define": "off",
-    "no-unused-vars": "error",
+    "no-unused-vars": "off",
     "prettier/prettier": "error",
     "import/extensions": [
       "error",
@@ -46,7 +46,7 @@ module.exports = {
     "import/no-default-export": "error",
     "import/prefer-default-export": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"],
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "react/jsx-filename-extension": [1, { extensions: [".jsx", ".tsx"] }],
     "react/jsx-one-expression-per-line": "off",
@@ -58,6 +58,22 @@ module.exports = {
         components: ["Link"],
         specialLink: ["hrefLeft", "hrefRight"],
         aspects: ["invalidHref", "preferButton"],
+      },
+    ],
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        required: {
+          some: ["nesting", "id"],
+        },
+      },
+    ],
+    "jsx-a11y/label-has-for": [
+      "error",
+      {
+        required: {
+          some: ["nesting", "id"],
+        },
       },
     ],
   },

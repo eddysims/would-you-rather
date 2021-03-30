@@ -1,0 +1,30 @@
+.input {
+  display: block;
+  width: 100%;
+  appearance: none;
+  border: none;
+  background: var(--color--grey);
+  border-radius: var(--radii--base);
+  height: calc(var(--space--base) * 2.5);
+  padding: 0 var(--space--base);
+  font-size: var(--font-size--small);
+  color: var(--color--text);
+  font-family: var(--font-family--display);
+  box-shadow: 0 0 0 0 var(--color--primary) inset;
+  transition: box-shadow 300ms;
+}
+
+.input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color--primary) inset;
+}
+
+.label {
+  display: block;
+  margin-bottom: var(--space--small);
+  margin-left: var(--space--smaller);
+  letter-spacing: 1px;
+  font-size: var(--font-size--small);
+  text-transform: uppercase;
+  cursor: pointer;
+}
