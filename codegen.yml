@@ -1,0 +1,16 @@
+overwrite: true
+schema:
+  - ${NEXT_PUBLIC_HASURA_GQL_URI}:
+      headers:
+        "X-Hasura-Admin-Secret": ${NEXT_PUBLIC_HASURA_ADMIN_SECRET}
+documents: "src/**/*.gql.*"
+generates:
+  src/types/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+      - "fragment-matcher"
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"
