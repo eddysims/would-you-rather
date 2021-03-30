@@ -1,0 +1,26 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs/blocks";
+import { Container } from ".";
+
+<Meta title="layouts/Container" component={Container} />
+
+# Container
+
+A `Container` is a component used to center content on a page.
+
+## Usage
+
+```tsx
+import { Container } from "@/components/Container";
+```
+
+## Props
+
+<ArgsTable component={Container} />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(args) => <Container {...args}>Hello World</Container>}
+  </Story>
+</Canvas>
