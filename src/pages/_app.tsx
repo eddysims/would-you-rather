@@ -1,5 +1,7 @@
 import type { AppProps } from "next/app";
 import { Provider } from "next-auth/client";
+import { ApolloProvider } from "@apollo/client";
+import { client } from "@/lib/apollo";
 
 import "../styles/globals.css";
 
@@ -12,7 +14,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       }}
       session={pageProps.session}
     >
-      <Component {...pageProps} />
+      <ApolloProvider client={client}>
+        <Component {...pageProps} />
+      </ApolloProvider>
     </Provider>
   );
 }

@@ -13,6 +13,7 @@ module.exports = {
   },
   moduleNameMapper: {
     "^@/components(.*)$": "<rootDir>/src/components$1",
+    "^@/lib(.*)$": "<rootDir>/src/lib$1",
     "\\.(css|less)$": "identity-obj-proxy",
   },
 };
