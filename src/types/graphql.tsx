@@ -761,6 +761,11 @@ export enum Users_Update_Column {
   UpdatedAt = 'updatedAt'
 }
 
+export type ProfileHeaderDataFragment = (
+  { __typename?: 'users' }
+  & Pick<Users, 'avatarUrl' | 'name'>
+);
+
 export type AddUserMutationVariables = Exact<{
   id: Scalars['String'];
   name: Scalars['String'];
@@ -777,7 +782,12 @@ export type AddUserMutation = (
   )> }
 );
 
-
+export const ProfileHeaderDataFragmentDoc = gql`
+    fragment profileHeaderData on users {
+  avatarUrl
+  name
+}
+    `;
 export const AddUserDocument = gql`
     mutation addUser($id: String!, $name: String!, $avatar: String, $provider: String!) {
   insert_users_one(

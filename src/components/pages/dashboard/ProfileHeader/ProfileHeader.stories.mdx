@@ -1,0 +1,33 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs/blocks";
+import { ProfileHeader } from ".";
+import { ProfileHeaderDataFragment } from "@/types/graphql";
+
+<Meta title="pages/dashboard/ProfileHeader" component={ProfileHeader} />
+
+# ProfileHeader
+
+## Usage
+
+```tsx
+import { ProfileHeader } from "@/components/ProfileHeader";
+```
+
+## Props
+
+<ArgsTable component={ProfileHeader} />
+
+## Example
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      data: {
+        name: "Eddy Sims",
+        avatarUrl: "https://avatars.githubusercontent.com/u/46460840?v=4",
+      },
+    }}
+  >
+    {(args) => <ProfileHeader {...args} />}
+  </Story>
+</Canvas>
