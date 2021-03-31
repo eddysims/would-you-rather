@@ -22,6 +22,7 @@
       "@/components/*": ["src/components/*"],
       "@/lib/*": ["src/lib/*"],
       "@/types/*": ["src/types/*"],
+      "@/graphql/*": ["src/graphql/*"],
     }, 
   },
   "include": [

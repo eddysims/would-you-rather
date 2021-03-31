@@ -16,7 +16,7 @@ interface AvatarProps {
 export function Avatar({ name, imageUrl }: AvatarProps) {
   const initials = getInitials();
   const style = {
-    backgroundImage: `url(${imageUrl})`,
+    backgroundImage: imageUrl && `url(${imageUrl})`,
   };
 
   return (
