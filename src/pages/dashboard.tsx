@@ -6,8 +6,7 @@ function Dashboard() {
   return (
     <>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Profile | Would You Rather</title>
       </Head>
       <Layout>
         <Protected>Your Profile</Protected>
