@@ -1,0 +1,9 @@
+.title {
+  margin: var(--space--largest) 0;
+  text-align: center;
+  color: var(--color--secondary);
+}
+
+.profile {
+  margin: var(--space--largest) 0;
+}

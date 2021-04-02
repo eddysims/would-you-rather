@@ -3,8 +3,11 @@ import { useSession } from "next-auth/client";
 import { useQuery } from "@apollo/client";
 import { Layout } from "@/components/Layout";
 import { Protected } from "@/components/Protected";
-import { ProfileHeader } from "@/components/pages/dashboard/ProfileHeader";
+import { Heading } from "@/components/Heading";
+import { Container } from "@/components/Container";
 import { GET_USER_QUERY } from "@/graphql/getUserQuery.gql";
+
+import styles from "./dashboard.module.css";
 
 function Dashboard() {
   const [session] = useSession();
@@ -23,7 +26,13 @@ function Dashboard() {
       </Head>
       <Layout>
         <Protected>
-          <ProfileHeader data={user} />
+          <Container>
+            <div className={styles.title}>
+              <Heading as="h1">Dashboard</Heading>
+            </div>
+            <div className={styles.profile}>Profile</div>
+            {JSON.stringify(user)}
+          </Container>
         </Protected>
       </Layout>
     </>
