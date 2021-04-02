@@ -1,3 +1,4 @@
+import classnames from "classnames";
 import { Icon } from "@/components/Icon";
 import styles from "./Avatar.module.css";
 
@@ -11,21 +12,34 @@ interface AvatarProps {
    * The url to the image that will be displayed
    */
   readonly imageUrl?: string;
+  /**
+   * The size the avatar will display at.
+   */
+  readonly size?: "base" | "small";
 }
 
-export function Avatar({ name, imageUrl }: AvatarProps) {
+export function Avatar({ name, imageUrl, size = "base" }: AvatarProps) {
   const initials = getInitials();
   const style = {
     backgroundImage: imageUrl && `url(${imageUrl})`,
   };
 
+  const avatarClasses = classnames(styles.avatar, {
+    [styles.small]: size === "small",
+  });
+
   return (
     <div
-      className={styles.avatar}
+      className={avatarClasses}
       style={style}
       aria-label={name ? `Avatar for user ${name}` : "Current users avatar"}
     >
-      {!imageUrl && (name ? initials : <Icon icon="User" />)}
+      {!imageUrl &&
+        (name ? (
+          initials
+        ) : (
+          <Icon icon="User" size={size === "base" ? "base" : "tiny"} />
+        ))}
     </div>
   );
 

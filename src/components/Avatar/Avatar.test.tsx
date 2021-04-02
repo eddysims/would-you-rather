@@ -40,3 +40,9 @@ it("does not render name if imageUrl is set", () => {
   const { queryByText } = render(<Avatar imageUrl="foo" name="Eddy Sims" />);
   expect(queryByText("ES")).toBeNull();
 });
+
+it("renders a small icon if small", () => {
+  const { getByTestId } = render(<Avatar size="small" />);
+
+  expect(getByTestId("icon-User").getAttribute("height")).toBe("12");
+});

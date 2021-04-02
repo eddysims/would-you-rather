@@ -4,6 +4,7 @@
 }
 
 :root {
+  --font-size--smallest: calc(var(--font-size--base) * 0.625);
   --font-size--small: calc(var(--font-size--base) * 0.9375); 
   --font-size--base: 16px;
 }
