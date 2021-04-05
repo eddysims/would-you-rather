@@ -16,3 +16,9 @@ it("renders a small icon", () => {
 
   expect(getByTestId("icon-Coffee").getAttribute("height")).toBe("12");
 });
+
+it("renders a custom icon", () => {
+  const { getByTestId } = render(<Icon icon="Google" />);
+
+  expect(getByTestId("icon-Google")).toBeInstanceOf(SVGElement);
+});
