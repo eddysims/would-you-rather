@@ -1,3 +1,6 @@
+import { useState } from "react";
+import classnames from "classnames";
+import { RegisterOptions, useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 
 import styles from "./InputText.module.css";
@@ -16,10 +19,29 @@ interface InputTextProps {
    * Change handler will return a new value.
    */
   onChange?(val: string | number): void;
+  /**
+   * Add validation rules. Based from [React Hook Forms](https://react-hook-form.com/).
+   */
+  readonly validations?: RegisterOptions;
 }
 
-export function InputText({ label, name, onChange }: InputTextProps) {
-  const inputName = name || uuidv4();
+export function InputText({
+  label,
+  name,
+  validations,
+  onChange,
+}: InputTextProps) {
+  const [inputName] = useState(name || uuidv4());
+  const { register, formState } = useForm({ mode: "onTouched" });
+
+  const error =
+    inputName &&
+    formState.errors[inputName] &&
+    formState.errors[inputName].message;
+
+  const inputClass = classnames(styles.input, {
+    [styles.error]: error,
+  });
 
   return (
     <div>
@@ -29,12 +51,19 @@ export function InputText({ label, name, onChange }: InputTextProps) {
         </label>
       )}
       <input
-        className={styles.input}
+        /**
+         * Disabling prop spreading as it is required by
+         * react hook forms.
+         */
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...register(inputName, { ...validations })}
+        className={inputClass}
         type="text"
         id={inputName}
         name={inputName}
         onChange={handleChange}
       />
+      <div>{error}</div>
     </div>
   );
 

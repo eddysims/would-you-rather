@@ -18,7 +18,34 @@ import { InputText } from "@/components/InputText";
 ## Example
 
 <Canvas>
-  <Story name="Default" args={{ label: "An awesome input" }}>
+  <Story
+    name="Default"
+    args={{
+      label: "An awesome input",
+    }}
+  >
+    {(args) => <InputText {...args} />}
+  </Story>
+</Canvas>
+
+## With validations
+
+The `InputText` component uses [React Hook Form](https://react-hook-form.com/) to validate fields.
+
+<Canvas>
+  <Story
+    name="With validations"
+    args={{
+      label: "Enter Your Name",
+      validations: {
+        minLength: {
+          value: 3,
+          message: "Thats an awfully short name",
+        },
+        required: "You need a name",
+      },
+    }}
+  >
     {(args) => <InputText {...args} />}
   </Story>
 </Canvas>

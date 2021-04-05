@@ -28,3 +28,8 @@
   text-transform: uppercase;
   cursor: pointer;
 }
+
+.error,
+.error:focus {
+  box-shadow: 0 0 0 2px var(--color--secondary) inset;
+}
