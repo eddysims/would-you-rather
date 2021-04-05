@@ -1,0 +1,26 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs/blocks";
+import { Profile } from ".";
+
+<Meta title="components/Profile" component={Profile} />
+
+# Profile
+
+`Profile` is used to show a users information and allow the user to edit their personal information.
+
+## Usage
+
+```tsx
+import { Profile } from "@/components/Profile";
+```
+
+## Props
+
+<ArgsTable component={Profile} />
+
+## Example
+
+<Canvas>
+  <Story name="Default" args={{ user: {} }}>
+    {(args) => <Profile {...args} />}
+  </Story>
+</Canvas>

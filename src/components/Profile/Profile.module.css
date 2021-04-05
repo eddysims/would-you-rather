@@ -1,0 +1,21 @@
+.title {
+  display: flex;
+  align-items: center;
+  gap: var(--space--small);
+}
+
+.title > h2 {
+  margin-right: var(--space--small);
+}
+
+.form {
+  margin-top: var(--space--base);
+}
+
+.form > * {
+  margin-top: var(--space--base);
+}
+
+.button {
+  margin-top: var(--space--large);
+}
