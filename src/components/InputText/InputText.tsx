@@ -2,6 +2,7 @@ import { useState } from "react";
 import classnames from "classnames";
 import { RegisterOptions, useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
+import { ValidationMessage } from "@/components/ValidationMessage";
 
 import styles from "./InputText.module.css";
 
@@ -63,7 +64,11 @@ export function InputText({
         name={inputName}
         onChange={handleChange}
       />
-      <div>{error}</div>
+      {error && (
+        <div className={styles.validation}>
+          <ValidationMessage message={error} />
+        </div>
+      )}
     </div>
   );
 
