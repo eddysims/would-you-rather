@@ -13,12 +13,17 @@ interface ButtonProps {
    */
   readonly loading?: boolean;
   /**
+   * Renders button as type="submit". To be used when using a
+   * button to submit a form
+   */
+  readonly isSubmit?: boolean;
+  /**
    * Click handler for the the button is clicked.
    */
   onClick(): void;
 }
 
-export function Button({ title, loading, onClick }: ButtonProps) {
+export function Button({ title, isSubmit, loading, onClick }: ButtonProps) {
   const buttonClass = classnames(styles.button, {
     [styles.loading]: loading,
   });
@@ -27,7 +32,7 @@ export function Button({ title, loading, onClick }: ButtonProps) {
   return (
     <button
       className={buttonClass}
-      type="button"
+      type={isSubmit ? "submit" : "button"}
       onClick={handleClick}
       disabled={isDisabled}
     >

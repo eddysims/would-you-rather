@@ -5,7 +5,7 @@ import { Button } from ".";
 
 # Button
 
-A `Button` is a typical button.
+A `Button` is a common element that allows a user to perform an action.
 
 ## Usage
 
@@ -44,6 +44,23 @@ When a button is `loading` it will not be interactive to the user.
       title: "Load the coffee machine",
       loading: true,
       onClick: () => alert("coffee loading"),
+    }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+</Canvas>
+
+## Submitting a form
+
+A `Button` can be used to submit a `Form` by using the `isSubmit` prop.
+
+<Canvas>
+  <Story
+    name="Submitting a form"
+    args={{
+      title: "Order more coffee",
+      isSubmit: true,
+      onClick: () => alert("Coffee has been ordered"),
     }}
   >
     {(args) => <Button {...args} />}

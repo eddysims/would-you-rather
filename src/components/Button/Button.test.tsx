@@ -33,3 +33,15 @@ it("should be disabled if loading", () => {
 
   expect(getByText("Foo")).toBeDisabled();
 });
+
+it("should render a type button by default", () => {
+  const { getByText } = render(<Button title="Foo" onClick={jest.fn()} />);
+  expect(getByText("Foo").getAttribute("type")).toBe("button");
+});
+
+it("should render a type submit when isSubmit is set", () => {
+  const { getByText } = render(
+    <Button title="Foo" isSubmit onClick={jest.fn()} />
+  );
+  expect(getByText("Foo").getAttribute("type")).toBe("submit");
+});
