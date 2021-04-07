@@ -1,6 +1,6 @@
 import { useState } from "react";
 import classnames from "classnames";
-import { RegisterOptions, useForm } from "react-hook-form";
+import { RegisterOptions, useForm, Controller } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 import { ValidationMessage } from "@/components/ValidationMessage";
 
@@ -33,16 +33,7 @@ export function InputText({
   onChange,
 }: InputTextProps) {
   const [inputName] = useState(name || uuidv4());
-  const { register, formState } = useForm({ mode: "onTouched" });
-
-  const error =
-    inputName &&
-    formState.errors[inputName] &&
-    formState.errors[inputName].message;
-
-  const inputClass = classnames(styles.input, {
-    [styles.error]: error,
-  });
+  const { control } = useForm({ mode: "onTouched" });
 
   return (
     <div>
@@ -51,28 +42,47 @@ export function InputText({
           {label}
         </label>
       )}
-      <input
-        /**
-         * Disabling prop spreading as it is required by
-         * react hook forms.
-         */
-        // eslint-disable-next-line react/jsx-props-no-spreading
-        {...register(inputName, { ...validations })}
-        className={inputClass}
-        type="text"
-        id={inputName}
+      <Controller
         name={inputName}
-        onChange={handleChange}
+        control={control}
+        rules={validations}
+        render={({
+          field: { onChange: contollerOnChange, onBlur, value },
+          fieldState: { invalid, error },
+        }) => {
+          const inputClass = classnames(styles.input, {
+            [styles.error]: invalid,
+          });
+
+          return (
+            <>
+              <input
+                name={inputName}
+                value={value}
+                onBlur={onBlur}
+                type="text"
+                className={inputClass}
+                onChange={handleChange}
+              />
+              {error && (
+                <div className={styles.validation}>
+                  <ValidationMessage message={error.message} />
+                </div>
+              )}
+            </>
+          );
+
+          function handleChange(event) {
+            const newValue = event.target.value;
+
+            contollerOnChange(newValue);
+
+            if (onChange) {
+              onChange(newValue);
+            }
+          }
+        }}
       />
-      {error && (
-        <div className={styles.validation}>
-          <ValidationMessage message={error} />
-        </div>
-      )}
     </div>
   );
-
-  function handleChange(event) {
-    onChange(event.target.value);
-  }
 }
