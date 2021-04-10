@@ -4,6 +4,13 @@ import { InputText } from ".";
 
 afterEach(cleanup);
 
+it("renders a label when set", () => {
+  const { getByText } = render(
+    <InputText onChange={jest.fn()} label="Eddy Sims" />
+  );
+  expect(getByText("Eddy Sims")).toBeInstanceOf(HTMLLabelElement);
+});
+
 it("calls the change handler when typing", () => {
   const changeHandler = jest.fn();
   const { getByRole } = render(<InputText onChange={changeHandler} />);
