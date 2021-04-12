@@ -40,8 +40,6 @@ it("should render a type button by default", () => {
 });
 
 it("should render a type submit when isSubmit is set", () => {
-  const { getByText } = render(
-    <Button title="Foo" isSubmit onClick={jest.fn()} />
-  );
+  const { getByText } = render(<Button title="Foo" isSubmit />);
   expect(getByText("Foo").getAttribute("type")).toBe("submit");
 });

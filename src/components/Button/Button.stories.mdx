@@ -1,4 +1,6 @@
 import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs/blocks";
+import { Form } from "@/components/Form";
+import { InputText } from "@/components/InputText";
 import { Button } from ".";
 
 <Meta title="components/Button" component={Button} />
@@ -52,7 +54,7 @@ When a button is `loading` it will not be interactive to the user.
 
 ## Submitting a form
 
-A `Button` can be used to submit a `Form` by using the `isSubmit` prop.
+A `Button` can be used to submit a `Form` by using the `isSubmit` prop. If the `isSubmit` prop is used, a `Button` **can not** use the `onClick` prop. The action should be handled throught the `onSubmit` prop of the `Form` component.
 
 <Canvas>
   <Story
@@ -60,9 +62,16 @@ A `Button` can be used to submit a `Form` by using the `isSubmit` prop.
     args={{
       title: "Order more coffee",
       isSubmit: true,
-      onClick: () => alert("Coffee has been ordered"),
     }}
   >
-    {(args) => <Button {...args} />}
+    {(args) => (
+      <Form onSubmit={() => alert("Coffee is ordered")}>
+        <InputText
+          label="Do you want coffee?"
+          validations={{ required: "You need to tell me" }}
+        />
+        <Button {...args} />
+      </Form>
+    )}
   </Story>
 </Canvas>

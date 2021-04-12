@@ -1,7 +1,8 @@
 import classnames from "classnames";
+import { XOR } from "ts-xor";
 import styles from "./Button.module.css";
 
-interface ButtonProps {
+interface ButtonBaseProps {
   /**
    * The text to appear in the Button.
    * Title is used instead of children with the intention of
@@ -12,16 +13,24 @@ interface ButtonProps {
    * Indicates that the button is in a loading state.
    */
   readonly loading?: boolean;
-  /**
-   * Renders button as type="submit". To be used when using a
-   * button to submit a form
-   */
-  readonly isSubmit?: boolean;
+}
+
+interface ButtonTypeButtonProps extends ButtonBaseProps {
   /**
    * Click handler for the the button is clicked.
    */
   onClick(): void;
 }
+
+interface ButtonTypeSubmitProps extends ButtonBaseProps {
+  /**
+   * Renders button as type="submit". To be used when using a
+   * button to submit a form
+   */
+  readonly isSubmit: boolean;
+}
+
+type ButtonProps = XOR<ButtonTypeButtonProps, ButtonTypeSubmitProps>;
 
 export function Button({ title, isSubmit, loading, onClick }: ButtonProps) {
   const buttonClass = classnames(styles.button, {
@@ -41,6 +50,8 @@ export function Button({ title, isSubmit, loading, onClick }: ButtonProps) {
   );
 
   function handleClick() {
-    onClick();
+    if (onClick) {
+      onClick();
+    }
   }
 }

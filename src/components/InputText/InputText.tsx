@@ -1,6 +1,11 @@
 import { useState } from "react";
 import classnames from "classnames";
-import { RegisterOptions, useForm, Controller } from "react-hook-form";
+import {
+  RegisterOptions,
+  useForm,
+  Controller,
+  useFormContext,
+} from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 import { ValidationMessage } from "@/components/ValidationMessage";
 
@@ -33,7 +38,10 @@ export function InputText({
   onChange,
 }: InputTextProps) {
   const [inputName] = useState(name || uuidv4());
-  const { control } = useForm({ mode: "onTouched" });
+  const { control } =
+    useFormContext() !== null
+      ? useFormContext()
+      : useForm({ mode: "onTouched" });
 
   return (
     <div>
@@ -58,7 +66,7 @@ export function InputText({
             <>
               <input
                 name={inputName}
-                value={value}
+                value={value || ""}
                 onBlur={onBlur}
                 type="text"
                 className={inputClass}
