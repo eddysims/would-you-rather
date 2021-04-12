@@ -47,3 +47,10 @@ it("adds the error class when invalid", async () => {
     expect(getByText("Error Foo")).toBeInstanceOf(HTMLDivElement);
   });
 });
+
+it("can have an initialValue set", () => {
+  const { getByRole } = render(<InputText initialValue="Eddy Sims" />);
+  const input = getByRole("textbox") as HTMLInputElement;
+
+  expect(input.value).toBe("Eddy Sims");
+});

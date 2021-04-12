@@ -29,12 +29,17 @@ interface InputTextProps {
    * Add validation rules. Based from [React Hook Forms](https://react-hook-form.com/).
    */
   readonly validations?: RegisterOptions;
+  /**
+   * initialValue to display in the input
+   */
+  readonly initialValue?: string;
 }
 
 export function InputText({
   label,
   name,
   validations,
+  initialValue,
   onChange,
 }: InputTextProps) {
   const [inputName] = useState(name || uuidv4());
@@ -54,6 +59,7 @@ export function InputText({
         name={inputName}
         control={control}
         rules={validations}
+        defaultValue={initialValue}
         render={({
           field: { onChange: contollerOnChange, onBlur, value },
           fieldState: { invalid, error },

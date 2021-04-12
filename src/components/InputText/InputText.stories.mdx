@@ -49,3 +49,19 @@ The `InputText` component uses [React Hook Form](https://react-hook-form.com/) t
     {(args) => <InputText {...args} />}
   </Story>
 </Canvas>
+
+## With an initial value
+
+You can set the initial value of an input useing the `initialValue` prop.
+
+<Canvas>
+  <Story
+    name="With an initial value"
+    args={{
+      label: "Who the heck are ya?",
+      initialValue: "Eddy Sims",
+    }}
+  >
+    {(args) => <InputText {...args} />}
+  </Story>
+</Canvas>
