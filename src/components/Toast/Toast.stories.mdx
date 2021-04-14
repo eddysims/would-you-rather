@@ -1,0 +1,68 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs/blocks";
+import { useRef } from "react";
+import { Button } from "@/components/Button";
+import { Toast } from ".";
+
+<Meta title="components/Toast" component={Toast} />
+
+# Toast
+
+`Toast` is used to show a short term notification.
+
+The `Toast` component exposes a `ref` with a `notify` method attached. To use the `Toast` you will want to call the `notify` function.
+
+```tsx
+import { useRef } from "react";
+import { Toast } from "@/components/Toast";
+
+export function Component() {
+  const toastRef = useRef();
+  return (
+    <>
+      <button onClick={() => toastRef.current.notify({...})}>Notify</button>
+      <Toast ref={toastRef} />
+    </>
+  )
+}
+```
+
+## Usage
+
+```tsx
+import { Toast } from "@/components/Toast";
+```
+
+## Props
+
+<ArgsTable component={Toast} />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      const toastRef = useRef();
+      const success = {
+        status: "success",
+        message: "You made some good coffee",
+      };
+      const error = {
+        status: "error",
+        message: "Thats some bitter coffee",
+      };
+      return (
+        <>
+          <Button
+            title="Successful toast"
+            onClick={() => toastRef.current.notify(success)}
+          />
+          <Button
+            title="Error toast"
+            onClick={() => toastRef.current.notify(error)}
+          />
+          <Toast ref={toastRef} />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
