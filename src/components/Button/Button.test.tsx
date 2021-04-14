@@ -43,3 +43,21 @@ it("should render a type submit when isSubmit is set", () => {
   const { getByText } = render(<Button title="Foo" isSubmit />);
   expect(getByText("Foo").getAttribute("type")).toBe("submit");
 });
+
+it("should be disabled if set", () => {
+  const { getByText } = render(
+    <Button title="Foo" disabled onClick={jest.fn()} />
+  );
+
+  expect(getByText("Foo")).toBeDisabled();
+});
+
+it("should not be clickable if disabled", () => {
+  const clickHandler = jest.fn();
+  const { getByText } = render(
+    <Button title="Foo" disabled onClick={clickHandler} />
+  );
+
+  expect(getByText("Foo")).toBeDisabled();
+  expect(clickHandler).not.toHaveBeenCalled();
+});

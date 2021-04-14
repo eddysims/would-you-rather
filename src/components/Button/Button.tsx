@@ -13,6 +13,10 @@ interface ButtonBaseProps {
    * Indicates that the button is in a loading state.
    */
   readonly loading?: boolean;
+  /**
+   * Indicates if the button is disabled
+   */
+  readonly disabled?: boolean;
 }
 
 interface ButtonTypeButtonProps extends ButtonBaseProps {
@@ -32,11 +36,18 @@ interface ButtonTypeSubmitProps extends ButtonBaseProps {
 
 type ButtonProps = XOR<ButtonTypeButtonProps, ButtonTypeSubmitProps>;
 
-export function Button({ title, isSubmit, loading, onClick }: ButtonProps) {
+export function Button({
+  title,
+  isSubmit,
+  loading,
+  disabled,
+  onClick,
+}: ButtonProps) {
   const buttonClass = classnames(styles.button, {
     [styles.loading]: loading,
+    [styles.disabled]: disabled,
   });
-  const isDisabled = loading;
+  const isDisabled = loading || disabled;
 
   return (
     <button
