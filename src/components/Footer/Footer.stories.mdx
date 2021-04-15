@@ -20,3 +20,18 @@ import { Footer } from "@/components/Footer";
 <Canvas>
   <Story name="Default">{(args) => <Footer {...args} />}</Story>
 </Canvas>
+
+## Get data on scroll
+
+The `Footer` will get its data once it is in the viewport
+
+<Canvas>
+  <Story name="Get data on scroll">
+    {(args) => (
+      <>
+        <div style={{ height: "110vh" }}>Scroll to run query</div>
+        <Footer {...args} />
+      </>
+    )}
+  </Story>
+</Canvas>

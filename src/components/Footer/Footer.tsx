@@ -1,39 +1,21 @@
-import { useQuery } from "@apollo/client";
+import { LegacyRef } from "react";
+import { useLazyQuery } from "@apollo/client";
 import { Container } from "@/components/Container";
 import { Logo } from "@/components/Logo";
 import { Link } from "@/components/Link";
 import { NumCounter } from "@/components/NumCounter";
+import handleViewport from "react-in-viewport";
+
 import { FOOTER_DATA_QUERY } from "./Footer.gql";
 
 import styles from "./Footer.module.css";
 
 export function Footer() {
-  const { data } = useQuery(FOOTER_DATA_QUERY);
-  const questions = data?.question_aggregate?.aggregate?.count || 1;
-  const votes =
-    data?.question_aggregate?.aggregate?.sum?.voteOne +
-      data?.question_aggregate?.aggregate?.sum?.voteTwo || 1;
-
   return (
     <>
       <footer className={styles.footer}>
         <Logo variation="full" />
-        <div className={styles.stats}>
-          <div className={styles.stat}>
-            Over{" "}
-            <span>
-              <NumCounter number={questions - 1} />
-            </span>
-            questions asked
-          </div>
-          <div className={styles.stat}>
-            Over{" "}
-            <span>
-              <NumCounter number={votes - 1} />
-            </span>
-            votes casted
-          </div>
-        </div>
+        <FooterStats />
       </footer>
       <Container>
         <div className={styles.subfooter}>
@@ -58,5 +40,50 @@ export function Footer() {
         </div>
       </Container>
     </>
+  );
+}
+
+const FooterStats = handleViewport(FooterStatsInternal);
+
+interface FooterStatsProps {
+  readonly inViewport: boolean;
+  readonly enterCount: number;
+  readonly forwardedRef: LegacyRef<HTMLDivElement>;
+}
+
+function FooterStatsInternal({
+  inViewport,
+  enterCount,
+  forwardedRef,
+}: FooterStatsProps) {
+  const [getStats, { called, data }] = useLazyQuery(FOOTER_DATA_QUERY);
+  const questions = data?.question_aggregate?.aggregate?.count || 1;
+  const votes =
+    data?.question_aggregate?.aggregate?.sum?.voteOne +
+      data?.question_aggregate?.aggregate?.sum?.voteTwo || 1;
+
+  if (enterCount === 1 && inViewport) {
+    if (!called) {
+      getStats();
+    }
+  }
+
+  return (
+    <div className={styles.stats} ref={forwardedRef}>
+      <div className={styles.stat}>
+        Over{" "}
+        <span>
+          <NumCounter number={questions - 1} />
+        </span>
+        questions asked
+      </div>
+      <div className={styles.stat}>
+        Over{" "}
+        <span>
+          <NumCounter number={votes - 1} />
+        </span>
+        votes casted
+      </div>
+    </div>
   );
 }

@@ -25,7 +25,7 @@ export function NumCounter({ number }: NumCounterProps) {
         clearInterval(counter);
       }
     }, frameDuration);
-  }, []);
+  }, [number]);
 
   return <>{Math.floor(count)}</>;
 }
