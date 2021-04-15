@@ -5,13 +5,14 @@ import { Layout } from "@/components/Layout";
 import { Protected } from "@/components/Protected";
 import { Heading } from "@/components/Heading";
 import { Container } from "@/components/Container";
-import { GET_USER_QUERY } from "@/graphql/getUserQuery.gql";
+import { Profile } from "@/components/Profile";
+import { DASHBOARD_QUERY } from "@/graphql/dashboardQuery";
 
 import styles from "./dashboard.module.css";
 
 function Dashboard() {
   const [session] = useSession();
-  const { data } = useQuery(GET_USER_QUERY, {
+  const { data } = useQuery(DASHBOARD_QUERY, {
     variables: {
       id: session?.user?.id,
     },
@@ -30,8 +31,7 @@ function Dashboard() {
             <div className={styles.title}>
               <Heading as="h1">Dashboard</Heading>
             </div>
-            <div className={styles.profile}>Profile</div>
-            {JSON.stringify(user)}
+            {user && <Profile user={user} />}
           </Container>
         </Protected>
       </Layout>

@@ -6,4 +6,9 @@
   --color--secondary: #FF5A5A;
 
   --color--grey: #333;
+
+  --color--success: #84DD63;
+  --color--success--dark: #77b85f;
+  --color--error: var(--color--secondary);
+  --color--error--dark: #db3535;
 }

@@ -28,39 +28,6 @@ export type Int_Comparison_Exp = {
   _nin?: Maybe<Array<Scalars['Int']>>;
 };
 
-/** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
-export type String_Comparison_Exp = {
-  _eq?: Maybe<Scalars['String']>;
-  _gt?: Maybe<Scalars['String']>;
-  _gte?: Maybe<Scalars['String']>;
-  /** does the column match the given case-insensitive pattern */
-  _ilike?: Maybe<Scalars['String']>;
-  _in?: Maybe<Array<Scalars['String']>>;
-  /** does the column match the given POSIX regular expression, case insensitive */
-  _iregex?: Maybe<Scalars['String']>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  /** does the column match the given pattern */
-  _like?: Maybe<Scalars['String']>;
-  _lt?: Maybe<Scalars['String']>;
-  _lte?: Maybe<Scalars['String']>;
-  _neq?: Maybe<Scalars['String']>;
-  /** does the column NOT match the given case-insensitive pattern */
-  _nilike?: Maybe<Scalars['String']>;
-  _nin?: Maybe<Array<Scalars['String']>>;
-  /** does the column NOT match the given POSIX regular expression, case insensitive */
-  _niregex?: Maybe<Scalars['String']>;
-  /** does the column NOT match the given pattern */
-  _nlike?: Maybe<Scalars['String']>;
-  /** does the column NOT match the given POSIX regular expression, case sensitive */
-  _nregex?: Maybe<Scalars['String']>;
-  /** does the column NOT match the given SQL regular expression */
-  _nsimilar?: Maybe<Scalars['String']>;
-  /** does the column match the given POSIX regular expression, case sensitive */
-  _regex?: Maybe<Scalars['String']>;
-  /** does the column match the given SQL regular expression */
-  _similar?: Maybe<Scalars['String']>;
-};
-
 /** mutation root */
 export type Mutation_Root = {
   __typename?: 'mutation_root';
@@ -456,12 +423,37 @@ export type Question_Stddev_Samp_Fields = {
   voteTwo?: Maybe<Scalars['Float']>;
 };
 
-/** aggregate sum on columns */
-export type Question_Sum_Fields = {
-  __typename?: 'question_sum_fields';
-  id?: Maybe<Scalars['Int']>;
-  voteOne?: Maybe<Scalars['Int']>;
-  voteTwo?: Maybe<Scalars['Int']>;
+/** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
+export type String_Comparison_Exp = {
+  _eq?: Maybe<Scalars['String']>;
+  _gt?: Maybe<Scalars['String']>;
+  _gte?: Maybe<Scalars['String']>;
+  /** does the column match the given case-insensitive pattern */
+  _ilike?: Maybe<Scalars['String']>;
+  _in?: Maybe<Array<Scalars['String']>>;
+  /** does the column match the given POSIX regular expression, case insensitive */
+  _iregex?: Maybe<Scalars['String']>;
+  _is_null?: Maybe<Scalars['Boolean']>;
+  /** does the column match the given pattern */
+  _like?: Maybe<Scalars['String']>;
+  _lt?: Maybe<Scalars['String']>;
+  _lte?: Maybe<Scalars['String']>;
+  _neq?: Maybe<Scalars['String']>;
+  /** does the column NOT match the given case-insensitive pattern */
+  _nilike?: Maybe<Scalars['String']>;
+  _nin?: Maybe<Array<Scalars['String']>>;
+  /** does the column NOT match the given POSIX regular expression, case insensitive */
+  _niregex?: Maybe<Scalars['String']>;
+  /** does the column NOT match the given pattern */
+  _nlike?: Maybe<Scalars['String']>;
+  /** does the column NOT match the given POSIX regular expression, case sensitive */
+  _nregex?: Maybe<Scalars['String']>;
+  /** does the column NOT match the given SQL regular expression */
+  _nsimilar?: Maybe<Scalars['String']>;
+  /** does the column match the given POSIX regular expression, case sensitive */
+  _regex?: Maybe<Scalars['String']>;
+  /** does the column match the given SQL regular expression */
+  _similar?: Maybe<Scalars['String']>;
 };
 
 /** update columns of table "question" */
@@ -761,6 +753,37 @@ export enum Users_Update_Column {
   UpdatedAt = 'updatedAt'
 }
 
+/** aggregate sum on columns */
+export type Question_Sum_Fields = {
+  __typename?: 'question_sum_fields';
+  id?: Maybe<Scalars['Int']>;
+  voteOne?: Maybe<Scalars['Int']>;
+  voteTwo?: Maybe<Scalars['Int']>;
+};
+
+export type ProfileDataFragment = (
+  { __typename?: 'users' }
+  & Pick<Users, 'id' | 'name' | 'provider' | 'nickname' | 'avatarUrl'>
+);
+
+export type UpdateUserProfileMutationVariables = Exact<{
+  id: Scalars['String'];
+  name: Scalars['String'];
+  nickname?: Maybe<Scalars['String']>;
+}>;
+
+
+export type UpdateUserProfileMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_users?: Maybe<(
+    { __typename?: 'users_mutation_response' }
+    & { returning: Array<(
+      { __typename?: 'users' }
+      & Pick<Users, 'id' | 'name' | 'avatarUrl' | 'nickname' | 'provider'>
+    )> }
+  )> }
+);
+
 export type ProfileHeaderDataFragment = (
   { __typename?: 'users' }
   & Pick<Users, 'avatarUrl' | 'name'>
@@ -782,12 +805,62 @@ export type AddUserMutation = (
   )> }
 );
 
+export const ProfileDataFragmentDoc = gql`
+    fragment profileData on users {
+  id
+  name
+  provider
+  nickname
+  avatarUrl
+}
+    `;
 export const ProfileHeaderDataFragmentDoc = gql`
     fragment profileHeaderData on users {
   avatarUrl
   name
 }
     `;
+export const UpdateUserProfileDocument = gql`
+    mutation updateUserProfile($id: String!, $name: String!, $nickname: String) {
+  update_users(where: {id: {_eq: $id}}, _set: {name: $name, nickname: $nickname}) {
+    returning {
+      id
+      name
+      avatarUrl
+      nickname
+      provider
+    }
+  }
+}
+    `;
+export type UpdateUserProfileMutationFn = Apollo.MutationFunction<UpdateUserProfileMutation, UpdateUserProfileMutationVariables>;
+
+/**
+ * __useUpdateUserProfileMutation__
+ *
+ * To run a mutation, you first call `useUpdateUserProfileMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateUserProfileMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateUserProfileMutation, { data, loading, error }] = useUpdateUserProfileMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      name: // value for 'name'
+ *      nickname: // value for 'nickname'
+ *   },
+ * });
+ */
+export function useUpdateUserProfileMutation(baseOptions?: Apollo.MutationHookOptions<UpdateUserProfileMutation, UpdateUserProfileMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateUserProfileMutation, UpdateUserProfileMutationVariables>(UpdateUserProfileDocument, options);
+      }
+export type UpdateUserProfileMutationHookResult = ReturnType<typeof useUpdateUserProfileMutation>;
+export type UpdateUserProfileMutationResult = Apollo.MutationResult<UpdateUserProfileMutation>;
+export type UpdateUserProfileMutationOptions = Apollo.BaseMutationOptions<UpdateUserProfileMutation, UpdateUserProfileMutationVariables>;
 export const AddUserDocument = gql`
     mutation addUser($id: String!, $name: String!, $avatar: String, $provider: String!) {
   insert_users_one(
