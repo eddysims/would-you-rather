@@ -7,6 +7,8 @@ import { Profile } from ".";
 
 `Profile` is used to show a users information and allow the user to edit their personal information.
 
+The `Profile` component also exports its own `GraphQL` fragment that can be added to a query to get the users information from the database.
+
 ## Usage
 
 ```tsx
@@ -20,7 +22,18 @@ import { Profile } from "@/components/Profile";
 ## Example
 
 <Canvas>
-  <Story name="Default" args={{ user: {} }}>
+  <Story
+    name="Default"
+    args={{
+      user: {
+        id: "100",
+        name: "Eddy Sims",
+        provider: "github",
+        nickname: "edeesims",
+        avatarUrl: "https://avatars.githubusercontent.com/u/46460840?v=4",
+      },
+    }}
+  >
     {(args) => <Profile {...args} />}
   </Story>
 </Canvas>
