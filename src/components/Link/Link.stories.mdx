@@ -1,0 +1,24 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs/blocks";
+import { Link } from ".";
+
+<Meta title="components/Link" component={Link} />
+
+# Link
+
+## Usage
+
+```tsx
+import { Link } from "@/components/Link";
+```
+
+## Props
+
+<ArgsTable component={Link} />
+
+## Example
+
+<Canvas>
+  <Story name="Default" args={{ to: "https://eddysims.com", external: true }}>
+    {(args) => <Link {...args}>I love coffee</Link>}
+  </Story>
+</Canvas>
