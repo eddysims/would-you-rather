@@ -6,6 +6,7 @@ interface NumCounterProps {
    */
   readonly number: number;
 }
+
 export function NumCounter({ number }: NumCounterProps) {
   const easeOutQuad = (t) => t * (2 - t);
   const frameDuration = 1000 / 60;

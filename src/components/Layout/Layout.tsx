@@ -2,6 +2,9 @@ import { useState, PropsWithChildren } from "react";
 import { useSession, signOut } from "next-auth/client";
 import { Navigation } from "@/components/Navigation";
 import { SignInModal } from "@/components/SignInModal";
+import { Footer } from "@/components/Footer";
+
+import styles from "./Layout.module.css";
 
 export function Layout({ children }: PropsWithChildren<unknown>) {
   const [signInOpen, setSignInOpen] = useState<boolean>();
@@ -10,10 +13,10 @@ export function Layout({ children }: PropsWithChildren<unknown>) {
 
   return (
     <>
-      <div>
+      <div className={styles.layout}>
         <Navigation items={navigationItems} />
-        <main>{children}</main>
-        <footer>Footer</footer>
+        <main className={styles.main}>{children}</main>
+        <Footer />
       </div>
       <SignInModal open={signInOpen} onClose={handleCloseModal} />
     </>

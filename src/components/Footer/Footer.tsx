@@ -57,10 +57,10 @@ function FooterStatsInternal({
   forwardedRef,
 }: FooterStatsProps) {
   const [getStats, { called, data }] = useLazyQuery(FOOTER_DATA_QUERY);
-  const questions = data?.question_aggregate?.aggregate?.count || 1;
+  const questions = data?.question_aggregate?.aggregate?.count;
   const votes =
     data?.question_aggregate?.aggregate?.sum?.voteOne +
-      data?.question_aggregate?.aggregate?.sum?.voteTwo || 1;
+    data?.question_aggregate?.aggregate?.sum?.voteTwo;
 
   if (enterCount === 1 && inViewport) {
     if (!called) {
@@ -73,14 +73,14 @@ function FooterStatsInternal({
       <div className={styles.stat}>
         Over{" "}
         <span>
-          <NumCounter number={questions - 1} />
+          <NumCounter number={questions - 1 || 0} />
         </span>
         questions asked
       </div>
       <div className={styles.stat}>
         Over{" "}
         <span>
-          <NumCounter number={votes - 1} />
+          <NumCounter number={votes - 1 || 0} />
         </span>
         votes casted
       </div>
