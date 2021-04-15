@@ -1,0 +1,26 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs/blocks";
+import { NumCounter } from ".";
+
+<Meta title="components/NumCounter" component={NumCounter} />
+
+# NumCounter
+
+`NumCounter` is a component to count from 0 to a specified number.
+
+## Usage
+
+```tsx
+import { NumCounter } from "@/components/NumCounter";
+```
+
+## Props
+
+<ArgsTable component={NumCounter} />
+
+## Example
+
+<Canvas>
+  <Story name="Default" args={{ number: 100 }}>
+    {(args) => <NumCounter {...args} />}
+  </Story>
+</Canvas>
