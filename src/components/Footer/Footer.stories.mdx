@@ -1,0 +1,22 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs/blocks";
+import { Footer } from ".";
+
+<Meta title="footer/Footer" component={Footer} />
+
+# Footer
+
+## Usage
+
+```tsx
+import { Footer } from "@/components/Footer";
+```
+
+## Props
+
+<ArgsTable component={Footer} />
+
+## Example
+
+<Canvas>
+  <Story name="Default">{(args) => <Footer {...args} />}</Story>
+</Canvas>
