@@ -1,0 +1,43 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs/blocks";
+import { Form } from "@/components/Form";
+import { InputText } from "@/components/InputText";
+import { Button } from "@/components/Button";
+import { useFormState } from "./useFormState";
+
+<Meta title="hooks/useFormState" component={useFormState} />
+
+# useFormState
+
+## Usage
+
+```tsx
+import { useFormState } from "@/hooks/useFormState";
+```
+
+## Props
+
+<ArgsTable component={useFormState} />
+
+## Example
+
+<Canvas>
+  <Story name="Default">
+    {(args) => {
+      const [formState, setFormState] = useFormState();
+      return (
+        <Form onStateChange={setFormState}>
+          <InputText
+            validations={{ required: "Required" }}
+            label="What is your favorite coffee?"
+          />
+          <Button disabled={!formState.isValid} title="Tell me" />
+          <hr />
+          <div>Form state:</div>
+          <pre>
+            <code>{JSON.stringify(formState)}</code>
+          </pre>
+        </Form>
+      );
+    }}
+  </Story>
+</Canvas>

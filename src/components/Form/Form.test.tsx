@@ -6,9 +6,11 @@ import { Form } from ".";
 
 afterEach(cleanup);
 
-it("renders the children of the form", () => {
+it("renders the children of the form", async () => {
   const { getByRole } = render(<MockForm onSubmit={jest.fn()} />);
-  expect(getByRole("textbox")).toBeInstanceOf(HTMLInputElement);
+  await waitFor(() => {
+    expect(getByRole("textbox")).toBeInstanceOf(HTMLInputElement);
+  });
 });
 
 it("displays validation messages when invalid form is submited", async () => {
@@ -39,13 +41,35 @@ it("calls the submit handler when the form is submitted", async () => {
   });
 });
 
+it("updates formState when formState is changed", async () => {
+  const onStateChangeHandler = jest.fn();
+  const { getByText, getByRole } = render(
+    <MockForm onSubmit={jest.fn()} onStateChange={onStateChangeHandler} />
+  );
+
+  const input = getByRole("textbox");
+  input.focus();
+  fireEvent.change(input, { target: { value: "Foo" } });
+  input.blur();
+
+  fireEvent.click(getByText("Submit"));
+
+  await waitFor(() => {
+    expect(onStateChangeHandler).toHaveBeenCalledWith({
+      isDirty: true,
+      isValid: true,
+    });
+  });
+});
+
 interface MockFormProps {
   onSubmit(): void;
+  onStateChange?(): void;
 }
 
-function MockForm({ onSubmit }: MockFormProps) {
+function MockForm({ onSubmit, onStateChange }: MockFormProps) {
   return (
-    <Form onSubmit={onSubmit}>
+    <Form onSubmit={onSubmit} onStateChange={onStateChange}>
       <InputText label="Foo" validations={{ required: "Validation Message" }} />
       <Button title="Submit" isSubmit />
     </Form>

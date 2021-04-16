@@ -23,6 +23,7 @@ module.exports = {
       alias: {
         map: [
           ["@/components", "./src/components"],
+          ["@/hooks", "./src/hooks"],
           ["@/lib", "./src/lib"],
           ["@/types", "./src/types"],
           ["@/graphql", "./src/graphql"],
