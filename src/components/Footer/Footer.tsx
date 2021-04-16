@@ -1,4 +1,4 @@
-import { LegacyRef } from "react";
+import { LegacyRef, useEffect, useState } from "react";
 import { useLazyQuery } from "@apollo/client";
 import { Container } from "@/components/Container";
 import { Logo } from "@/components/Logo";
@@ -57,10 +57,8 @@ function FooterStatsInternal({
   forwardedRef,
 }: FooterStatsProps) {
   const [getStats, { called, data }] = useLazyQuery(FOOTER_DATA_QUERY);
-  const questions = data?.question_aggregate?.aggregate?.count;
-  const votes =
-    data?.question_aggregate?.aggregate?.sum?.voteOne +
-    data?.question_aggregate?.aggregate?.sum?.voteTwo;
+  const [questions, setQuestions] = useState<number>();
+  const [votes, setVotes] = useState<number>();
 
   if (enterCount === 1 && inViewport) {
     if (!called) {
@@ -68,20 +66,23 @@ function FooterStatsInternal({
     }
   }
 
+  useEffect(() => {
+    setQuestions(data?.question_aggregate?.aggregate?.count - 1);
+    setVotes(
+      data?.question_aggregate?.aggregate?.sum?.voteOne +
+        data?.question_aggregate?.aggregate?.sum?.voteTwo -
+        1
+    );
+  }, [data]);
+
   return (
     <div className={styles.stats} ref={forwardedRef}>
       <div className={styles.stat}>
-        Over{" "}
-        <span>
-          <NumCounter number={questions - 1 || 0} />
-        </span>
+        Over <span>{questions ? <NumCounter number={questions} /> : 0}</span>
         questions asked
       </div>
       <div className={styles.stat}>
-        Over{" "}
-        <span>
-          <NumCounter number={votes - 1 || 0} />
-        </span>
+        Over <span>{votes ? <NumCounter number={votes} /> : 0}</span>
         votes casted
       </div>
     </div>
