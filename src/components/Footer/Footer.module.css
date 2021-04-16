@@ -32,6 +32,7 @@
   justify-content: space-between;
   gap: var(--space--base);
   padding: var(--space--large) 0;
+  font-size: var(--font-size--small);
 }
 
 .subfooter ul {
@@ -40,5 +41,4 @@
   list-style: none;
   display: flex;
   gap: var(--space--base);
-  font-size: var(--font-size--small);
 }
