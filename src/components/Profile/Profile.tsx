@@ -6,6 +6,7 @@ import { InputText } from "@/components/InputText";
 import { Button } from "@/components/Button";
 import { Form } from "@/components/Form";
 import { Toast, ToastRef } from "@/components/Toast";
+import { useFormState } from "@/hooks/useFormState";
 import {
   ProfileDataFragment,
   UpdateUserProfileMutation,
@@ -23,6 +24,7 @@ interface ProfileProps {
 export function Profile({ user }: ProfileProps) {
   const [name, setName] = useState(user.name);
   const [nickname, setNickname] = useState(user.nickname);
+  const [{ isDirty, isValid }, setFormState] = useFormState();
   const [updateProfile, { loading }] = useMutation<
     UpdateUserProfileMutation,
     UpdateUserProfileMutationVariables
@@ -37,7 +39,7 @@ export function Profile({ user }: ProfileProps) {
           <Avatar size="small" name={user.name} imageUrl={user.avatarUrl} />
           <Icon icon={getProfileIcon()} />
         </div>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} onStateChange={setFormState}>
           <div className={styles.form}>
             <InputText
               label="Display name"
@@ -51,7 +53,12 @@ export function Profile({ user }: ProfileProps) {
               onChange={handleNickNameChange}
             />
             <div className={styles.button}>
-              <Button title="Update Your Profile" isSubmit loading={loading} />
+              <Button
+                title="Update Your Profile"
+                isSubmit
+                loading={loading}
+                disabled={!isDirty || !isValid}
+              />
             </div>
           </div>
         </Form>

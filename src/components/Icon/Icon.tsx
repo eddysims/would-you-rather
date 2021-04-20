@@ -8,7 +8,7 @@ interface IconProps {
   /**
    * The size of the icon.
    */
-  readonly size?: "tiny" | "base";
+  readonly size?: "tiny" | "base" | "large";
 }
 
 export function Icon({ icon, size = "base" }: IconProps) {
@@ -17,6 +17,7 @@ export function Icon({ icon, size = "base" }: IconProps) {
   const heights = {
     tiny: 12,
     base: 24,
+    large: 36,
   };
 
   if (isCustomIcon) {

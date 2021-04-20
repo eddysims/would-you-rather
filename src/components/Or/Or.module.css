@@ -1,0 +1,43 @@
+.or {
+  position: relative;
+  display: inline-flex;
+  width: var(--space--largest);
+  height: var(--space--largest);
+}
+
+.or::before {
+  content: '';
+  width: 100%;
+  z-index: 40;
+  background: var(--color--background);
+  border-radius: var(--radii--circle);
+  border: 3px solid var(--color--secondary);
+  border-top-color: var(--color--primary);
+  border-left-color: var(--color--primary);
+}
+
+.or::after {
+  content: "OR";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 50;
+  transform: translate(-50%, -50%);
+  font-size: var(--font-size--small);
+}
+
+.or svg {
+  position: absolute;
+}
+
+.or svg:first-child {
+  color: var(--color--secondary);
+  bottom: calc(var(--space--base) * -.75);
+  left: calc(var(--space--base) * -.75);
+}
+
+.or svg:last-child {
+  color: var(--color--primary);
+  top: calc(var(--space--base) * -.75);
+  right: calc(var(--space--base) * -.75);
+}
