@@ -27,6 +27,7 @@ module.exports = {
           ["@/lib", "./src/lib"],
           ["@/types", "./src/types"],
           ["@/graphql", "./src/graphql"],
+          ["@/data", "./src/data"],
         ],
         extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
       },

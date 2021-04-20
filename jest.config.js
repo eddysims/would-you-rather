@@ -17,6 +17,7 @@ module.exports = {
     "^@/lib(.*)$": "<rootDir>/src/lib$1",
     "^@/types(.*)$": "<rootDir>/src/types$1",
     "^@/graphql(.*)$": "<rootDir>/src/graphql$1",
+    "^@/data(.*)$": "<rootDir>/src/data$1",
     "\\.(css|less)$": "identity-obj-proxy",
   },
 };

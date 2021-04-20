@@ -3,12 +3,16 @@
   --color--text: #eee;
 
   --color--primary: #5ACEFF;
+  --color--primary--dark: #0B9AD8;
+  --color--primary--darker: #0D5675;
+  --color--secondary--light: #FFB9B9;
   --color--secondary: #FF5A5A;
+  --color--secondary--dark: #db3535;
 
   --color--grey: #333;
 
   --color--success: #84DD63;
   --color--success--dark: #77b85f;
   --color--error: var(--color--secondary);
-  --color--error--dark: #db3535;
+  --color--error--dark: var(--color--secondary--dark);
 }
