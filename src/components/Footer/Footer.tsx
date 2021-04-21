@@ -69,8 +69,8 @@ function FooterStatsInternal({
   useEffect(() => {
     setQuestions(data?.question_aggregate?.aggregate?.count - 1);
     setVotes(
-      data?.question_aggregate?.aggregate?.sum?.voteOne +
-        data?.question_aggregate?.aggregate?.sum?.voteTwo -
+      data?.question_aggregate?.aggregate?.sum?.prefixVoteCount +
+        data?.question_aggregate?.aggregate?.sum?.suffixVoteCount -
         1
     );
   }, [data]);

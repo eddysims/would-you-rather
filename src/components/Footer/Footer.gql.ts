@@ -6,8 +6,8 @@ export const FOOTER_DATA_QUERY = gql`
       aggregate {
         count
         sum {
-          voteOne
-          voteTwo
+          prefixVoteCount
+          suffixVoteCount
         }
       }
     }

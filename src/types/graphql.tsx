@@ -222,12 +222,12 @@ export type Question = {
   __typename?: 'question';
   created_at: Scalars['timestamptz'];
   id: Scalars['Int'];
-  optionOne: Scalars['String'];
-  optionTwo: Scalars['String'];
+  prefix: Scalars['String'];
+  prefixVoteCount: Scalars['Int'];
+  suffix: Scalars['String'];
+  suffixVoteCount: Scalars['Int'];
   updated_at: Scalars['timestamptz'];
   user_id?: Maybe<Scalars['String']>;
-  voteOne: Scalars['Int'];
-  voteTwo: Scalars['Int'];
 };
 
 /** aggregated selection of "question" */
@@ -264,8 +264,8 @@ export type Question_Aggregate_FieldsCountArgs = {
 export type Question_Avg_Fields = {
   __typename?: 'question_avg_fields';
   id?: Maybe<Scalars['Float']>;
-  voteOne?: Maybe<Scalars['Float']>;
-  voteTwo?: Maybe<Scalars['Float']>;
+  prefixVoteCount?: Maybe<Scalars['Float']>;
+  suffixVoteCount?: Maybe<Scalars['Float']>;
 };
 
 /** Boolean expression to filter rows from the table "question". All fields are combined with a logical 'AND'. */
@@ -275,12 +275,12 @@ export type Question_Bool_Exp = {
   _or?: Maybe<Array<Question_Bool_Exp>>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
   id?: Maybe<Int_Comparison_Exp>;
-  optionOne?: Maybe<String_Comparison_Exp>;
-  optionTwo?: Maybe<String_Comparison_Exp>;
+  prefix?: Maybe<String_Comparison_Exp>;
+  prefixVoteCount?: Maybe<Int_Comparison_Exp>;
+  suffix?: Maybe<String_Comparison_Exp>;
+  suffixVoteCount?: Maybe<Int_Comparison_Exp>;
   updated_at?: Maybe<Timestamptz_Comparison_Exp>;
   user_id?: Maybe<String_Comparison_Exp>;
-  voteOne?: Maybe<Int_Comparison_Exp>;
-  voteTwo?: Maybe<Int_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "question" */
@@ -292,20 +292,20 @@ export enum Question_Constraint {
 /** input type for incrementing numeric columns in table "question" */
 export type Question_Inc_Input = {
   id?: Maybe<Scalars['Int']>;
-  voteOne?: Maybe<Scalars['Int']>;
-  voteTwo?: Maybe<Scalars['Int']>;
+  prefixVoteCount?: Maybe<Scalars['Int']>;
+  suffixVoteCount?: Maybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "question" */
 export type Question_Insert_Input = {
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['Int']>;
-  optionOne?: Maybe<Scalars['String']>;
-  optionTwo?: Maybe<Scalars['String']>;
+  prefix?: Maybe<Scalars['String']>;
+  prefixVoteCount?: Maybe<Scalars['Int']>;
+  suffix?: Maybe<Scalars['String']>;
+  suffixVoteCount?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   user_id?: Maybe<Scalars['String']>;
-  voteOne?: Maybe<Scalars['Int']>;
-  voteTwo?: Maybe<Scalars['Int']>;
 };
 
 /** aggregate max on columns */
@@ -313,12 +313,12 @@ export type Question_Max_Fields = {
   __typename?: 'question_max_fields';
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['Int']>;
-  optionOne?: Maybe<Scalars['String']>;
-  optionTwo?: Maybe<Scalars['String']>;
+  prefix?: Maybe<Scalars['String']>;
+  prefixVoteCount?: Maybe<Scalars['Int']>;
+  suffix?: Maybe<Scalars['String']>;
+  suffixVoteCount?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   user_id?: Maybe<Scalars['String']>;
-  voteOne?: Maybe<Scalars['Int']>;
-  voteTwo?: Maybe<Scalars['Int']>;
 };
 
 /** aggregate min on columns */
@@ -326,12 +326,12 @@ export type Question_Min_Fields = {
   __typename?: 'question_min_fields';
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['Int']>;
-  optionOne?: Maybe<Scalars['String']>;
-  optionTwo?: Maybe<Scalars['String']>;
+  prefix?: Maybe<Scalars['String']>;
+  prefixVoteCount?: Maybe<Scalars['Int']>;
+  suffix?: Maybe<Scalars['String']>;
+  suffixVoteCount?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   user_id?: Maybe<Scalars['String']>;
-  voteOne?: Maybe<Scalars['Int']>;
-  voteTwo?: Maybe<Scalars['Int']>;
 };
 
 /** response of any mutation on the table "question" */
@@ -354,12 +354,12 @@ export type Question_On_Conflict = {
 export type Question_Order_By = {
   created_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
-  optionOne?: Maybe<Order_By>;
-  optionTwo?: Maybe<Order_By>;
+  prefix?: Maybe<Order_By>;
+  prefixVoteCount?: Maybe<Order_By>;
+  suffix?: Maybe<Order_By>;
+  suffixVoteCount?: Maybe<Order_By>;
   updated_at?: Maybe<Order_By>;
   user_id?: Maybe<Order_By>;
-  voteOne?: Maybe<Order_By>;
-  voteTwo?: Maybe<Order_By>;
 };
 
 /** primary key columns input for table: question */
@@ -374,53 +374,53 @@ export enum Question_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  OptionOne = 'optionOne',
+  Prefix = 'prefix',
   /** column name */
-  OptionTwo = 'optionTwo',
+  PrefixVoteCount = 'prefixVoteCount',
+  /** column name */
+  Suffix = 'suffix',
+  /** column name */
+  SuffixVoteCount = 'suffixVoteCount',
   /** column name */
   UpdatedAt = 'updated_at',
   /** column name */
-  UserId = 'user_id',
-  /** column name */
-  VoteOne = 'voteOne',
-  /** column name */
-  VoteTwo = 'voteTwo'
+  UserId = 'user_id'
 }
 
 /** input type for updating data in table "question" */
 export type Question_Set_Input = {
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['Int']>;
-  optionOne?: Maybe<Scalars['String']>;
-  optionTwo?: Maybe<Scalars['String']>;
+  prefix?: Maybe<Scalars['String']>;
+  prefixVoteCount?: Maybe<Scalars['Int']>;
+  suffix?: Maybe<Scalars['String']>;
+  suffixVoteCount?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   user_id?: Maybe<Scalars['String']>;
-  voteOne?: Maybe<Scalars['Int']>;
-  voteTwo?: Maybe<Scalars['Int']>;
 };
 
 /** aggregate stddev on columns */
 export type Question_Stddev_Fields = {
   __typename?: 'question_stddev_fields';
   id?: Maybe<Scalars['Float']>;
-  voteOne?: Maybe<Scalars['Float']>;
-  voteTwo?: Maybe<Scalars['Float']>;
+  prefixVoteCount?: Maybe<Scalars['Float']>;
+  suffixVoteCount?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_pop on columns */
 export type Question_Stddev_Pop_Fields = {
   __typename?: 'question_stddev_pop_fields';
   id?: Maybe<Scalars['Float']>;
-  voteOne?: Maybe<Scalars['Float']>;
-  voteTwo?: Maybe<Scalars['Float']>;
+  prefixVoteCount?: Maybe<Scalars['Float']>;
+  suffixVoteCount?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_samp on columns */
 export type Question_Stddev_Samp_Fields = {
   __typename?: 'question_stddev_samp_fields';
   id?: Maybe<Scalars['Float']>;
-  voteOne?: Maybe<Scalars['Float']>;
-  voteTwo?: Maybe<Scalars['Float']>;
+  prefixVoteCount?: Maybe<Scalars['Float']>;
+  suffixVoteCount?: Maybe<Scalars['Float']>;
 };
 
 /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
@@ -463,41 +463,41 @@ export enum Question_Update_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  OptionOne = 'optionOne',
+  Prefix = 'prefix',
   /** column name */
-  OptionTwo = 'optionTwo',
+  PrefixVoteCount = 'prefixVoteCount',
+  /** column name */
+  Suffix = 'suffix',
+  /** column name */
+  SuffixVoteCount = 'suffixVoteCount',
   /** column name */
   UpdatedAt = 'updated_at',
   /** column name */
-  UserId = 'user_id',
-  /** column name */
-  VoteOne = 'voteOne',
-  /** column name */
-  VoteTwo = 'voteTwo'
+  UserId = 'user_id'
 }
 
 /** aggregate var_pop on columns */
 export type Question_Var_Pop_Fields = {
   __typename?: 'question_var_pop_fields';
   id?: Maybe<Scalars['Float']>;
-  voteOne?: Maybe<Scalars['Float']>;
-  voteTwo?: Maybe<Scalars['Float']>;
+  prefixVoteCount?: Maybe<Scalars['Float']>;
+  suffixVoteCount?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate var_samp on columns */
 export type Question_Var_Samp_Fields = {
   __typename?: 'question_var_samp_fields';
   id?: Maybe<Scalars['Float']>;
-  voteOne?: Maybe<Scalars['Float']>;
-  voteTwo?: Maybe<Scalars['Float']>;
+  prefixVoteCount?: Maybe<Scalars['Float']>;
+  suffixVoteCount?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate variance on columns */
 export type Question_Variance_Fields = {
   __typename?: 'question_variance_fields';
   id?: Maybe<Scalars['Float']>;
-  voteOne?: Maybe<Scalars['Float']>;
-  voteTwo?: Maybe<Scalars['Float']>;
+  prefixVoteCount?: Maybe<Scalars['Float']>;
+  suffixVoteCount?: Maybe<Scalars['Float']>;
 };
 
 export type Subscription_Root = {
@@ -757,9 +757,27 @@ export enum Users_Update_Column {
 export type Question_Sum_Fields = {
   __typename?: 'question_sum_fields';
   id?: Maybe<Scalars['Int']>;
-  voteOne?: Maybe<Scalars['Int']>;
-  voteTwo?: Maybe<Scalars['Int']>;
+  prefixVoteCount?: Maybe<Scalars['Int']>;
+  suffixVoteCount?: Maybe<Scalars['Int']>;
 };
+
+export type GetTotalCountsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetTotalCountsQuery = (
+  { __typename?: 'query_root' }
+  & { question_aggregate: (
+    { __typename?: 'question_aggregate' }
+    & { aggregate?: Maybe<(
+      { __typename?: 'question_aggregate_fields' }
+      & Pick<Question_Aggregate_Fields, 'count'>
+      & { sum?: Maybe<(
+        { __typename?: 'question_sum_fields' }
+        & Pick<Question_Sum_Fields, 'prefixVoteCount' | 'suffixVoteCount'>
+      )> }
+    )> }
+  ) }
+);
 
 export type ProfileDataFragment = (
   { __typename?: 'users' }
@@ -782,11 +800,6 @@ export type UpdateUserProfileMutation = (
       & Pick<Users, 'id' | 'name' | 'avatarUrl' | 'nickname' | 'provider'>
     )> }
   )> }
-);
-
-export type ProfileHeaderDataFragment = (
-  { __typename?: 'users' }
-  & Pick<Users, 'avatarUrl' | 'name'>
 );
 
 export type AddUserMutationVariables = Exact<{
@@ -814,12 +827,46 @@ export const ProfileDataFragmentDoc = gql`
   avatarUrl
 }
     `;
-export const ProfileHeaderDataFragmentDoc = gql`
-    fragment profileHeaderData on users {
-  avatarUrl
-  name
+export const GetTotalCountsDocument = gql`
+    query getTotalCounts {
+  question_aggregate {
+    aggregate {
+      count
+      sum {
+        prefixVoteCount
+        suffixVoteCount
+      }
+    }
+  }
 }
     `;
+
+/**
+ * __useGetTotalCountsQuery__
+ *
+ * To run a query within a React component, call `useGetTotalCountsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTotalCountsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTotalCountsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetTotalCountsQuery(baseOptions?: Apollo.QueryHookOptions<GetTotalCountsQuery, GetTotalCountsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTotalCountsQuery, GetTotalCountsQueryVariables>(GetTotalCountsDocument, options);
+      }
+export function useGetTotalCountsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTotalCountsQuery, GetTotalCountsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTotalCountsQuery, GetTotalCountsQueryVariables>(GetTotalCountsDocument, options);
+        }
+export type GetTotalCountsQueryHookResult = ReturnType<typeof useGetTotalCountsQuery>;
+export type GetTotalCountsLazyQueryHookResult = ReturnType<typeof useGetTotalCountsLazyQuery>;
+export type GetTotalCountsQueryResult = Apollo.QueryResult<GetTotalCountsQuery, GetTotalCountsQueryVariables>;
 export const UpdateUserProfileDocument = gql`
     mutation updateUserProfile($id: String!, $name: String!, $nickname: String) {
   update_users(where: {id: {_eq: $id}}, _set: {name: $name, nickname: $nickname}) {

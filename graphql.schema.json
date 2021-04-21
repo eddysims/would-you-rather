@@ -1212,7 +1212,7 @@
             "deprecationReason": null
           },
           {
-            "name": "optionOne",
+            "name": "prefix",
             "description": null,
             "args": [],
             "type": {
@@ -1228,7 +1228,23 @@
             "deprecationReason": null
           },
           {
-            "name": "optionTwo",
+            "name": "prefixVoteCount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "suffix",
             "description": null,
             "args": [],
             "type": {
@@ -1237,6 +1253,22 @@
               "ofType": {
                 "kind": "SCALAR",
                 "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "suffixVoteCount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
                 "ofType": null
               }
             },
@@ -1267,38 +1299,6 @@
               "kind": "SCALAR",
               "name": "String",
               "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "voteOne",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "voteTwo",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -1554,7 +1554,7 @@
             "deprecationReason": null
           },
           {
-            "name": "voteOne",
+            "name": "prefixVoteCount",
             "description": null,
             "args": [],
             "type": {
@@ -1566,7 +1566,7 @@
             "deprecationReason": null
           },
           {
-            "name": "voteTwo",
+            "name": "suffixVoteCount",
             "description": null,
             "args": [],
             "type": {
@@ -1676,7 +1676,7 @@
             "deprecationReason": null
           },
           {
-            "name": "optionOne",
+            "name": "prefix",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
@@ -1688,11 +1688,35 @@
             "deprecationReason": null
           },
           {
-            "name": "optionTwo",
+            "name": "prefixVoteCount",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "Int_comparison_exp",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "suffix",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "String_comparison_exp",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "suffixVoteCount",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "Int_comparison_exp",
               "ofType": null
             },
             "defaultValue": null,
@@ -1717,30 +1741,6 @@
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "String_comparison_exp",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "voteOne",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "Int_comparison_exp",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "voteTwo",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "Int_comparison_exp",
               "ofType": null
             },
             "defaultValue": null,
@@ -1788,7 +1788,7 @@
             "deprecationReason": null
           },
           {
-            "name": "voteOne",
+            "name": "prefixVoteCount",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1800,7 +1800,7 @@
             "deprecationReason": null
           },
           {
-            "name": "voteTwo",
+            "name": "suffixVoteCount",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1847,7 +1847,7 @@
             "deprecationReason": null
           },
           {
-            "name": "optionOne",
+            "name": "prefix",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1859,11 +1859,35 @@
             "deprecationReason": null
           },
           {
-            "name": "optionTwo",
+            "name": "prefixVoteCount",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "suffix",
             "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "suffixVoteCount",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
               "ofType": null
             },
             "defaultValue": null,
@@ -1888,30 +1912,6 @@
             "type": {
               "kind": "SCALAR",
               "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "voteOne",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Int",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "voteTwo",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Int",
               "ofType": null
             },
             "defaultValue": null,
@@ -1953,7 +1953,7 @@
             "deprecationReason": null
           },
           {
-            "name": "optionOne",
+            "name": "prefix",
             "description": null,
             "args": [],
             "type": {
@@ -1965,12 +1965,36 @@
             "deprecationReason": null
           },
           {
-            "name": "optionTwo",
+            "name": "prefixVoteCount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "suffix",
             "description": null,
             "args": [],
             "type": {
               "kind": "SCALAR",
               "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "suffixVoteCount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1995,30 +2019,6 @@
             "type": {
               "kind": "SCALAR",
               "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "voteOne",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "Int",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "voteTwo",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "Int",
               "ofType": null
             },
             "isDeprecated": false,
@@ -2060,7 +2060,7 @@
             "deprecationReason": null
           },
           {
-            "name": "optionOne",
+            "name": "prefix",
             "description": null,
             "args": [],
             "type": {
@@ -2072,12 +2072,36 @@
             "deprecationReason": null
           },
           {
-            "name": "optionTwo",
+            "name": "prefixVoteCount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "suffix",
             "description": null,
             "args": [],
             "type": {
               "kind": "SCALAR",
               "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "suffixVoteCount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
               "ofType": null
             },
             "isDeprecated": false,
@@ -2102,30 +2126,6 @@
             "type": {
               "kind": "SCALAR",
               "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "voteOne",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "Int",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "voteTwo",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "Int",
               "ofType": null
             },
             "isDeprecated": false,
@@ -2282,7 +2282,7 @@
             "deprecationReason": null
           },
           {
-            "name": "optionOne",
+            "name": "prefix",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -2294,7 +2294,31 @@
             "deprecationReason": null
           },
           {
-            "name": "optionTwo",
+            "name": "prefixVoteCount",
+            "description": null,
+            "type": {
+              "kind": "ENUM",
+              "name": "order_by",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "suffix",
+            "description": null,
+            "type": {
+              "kind": "ENUM",
+              "name": "order_by",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "suffixVoteCount",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -2319,30 +2343,6 @@
           },
           {
             "name": "user_id",
-            "description": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "order_by",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "voteOne",
-            "description": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "order_by",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "voteTwo",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -2406,13 +2406,25 @@
             "deprecationReason": null
           },
           {
-            "name": "optionOne",
+            "name": "prefix",
             "description": "column name",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "optionTwo",
+            "name": "prefixVoteCount",
+            "description": "column name",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "suffix",
+            "description": "column name",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "suffixVoteCount",
             "description": "column name",
             "isDeprecated": false,
             "deprecationReason": null
@@ -2425,18 +2437,6 @@
           },
           {
             "name": "user_id",
-            "description": "column name",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "voteOne",
-            "description": "column name",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "voteTwo",
             "description": "column name",
             "isDeprecated": false,
             "deprecationReason": null
@@ -2475,7 +2475,7 @@
             "deprecationReason": null
           },
           {
-            "name": "optionOne",
+            "name": "prefix",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -2487,11 +2487,35 @@
             "deprecationReason": null
           },
           {
-            "name": "optionTwo",
+            "name": "prefixVoteCount",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "suffix",
             "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "suffixVoteCount",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
               "ofType": null
             },
             "defaultValue": null,
@@ -2521,30 +2545,6 @@
             "defaultValue": null,
             "isDeprecated": false,
             "deprecationReason": null
-          },
-          {
-            "name": "voteOne",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Int",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "voteTwo",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Int",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
           }
         ],
         "interfaces": null,
@@ -2569,7 +2569,7 @@
             "deprecationReason": null
           },
           {
-            "name": "voteOne",
+            "name": "prefixVoteCount",
             "description": null,
             "args": [],
             "type": {
@@ -2581,7 +2581,7 @@
             "deprecationReason": null
           },
           {
-            "name": "voteTwo",
+            "name": "suffixVoteCount",
             "description": null,
             "args": [],
             "type": {
@@ -2616,7 +2616,7 @@
             "deprecationReason": null
           },
           {
-            "name": "voteOne",
+            "name": "prefixVoteCount",
             "description": null,
             "args": [],
             "type": {
@@ -2628,7 +2628,7 @@
             "deprecationReason": null
           },
           {
-            "name": "voteTwo",
+            "name": "suffixVoteCount",
             "description": null,
             "args": [],
             "type": {
@@ -2663,7 +2663,7 @@
             "deprecationReason": null
           },
           {
-            "name": "voteOne",
+            "name": "prefixVoteCount",
             "description": null,
             "args": [],
             "type": {
@@ -2675,7 +2675,7 @@
             "deprecationReason": null
           },
           {
-            "name": "voteTwo",
+            "name": "suffixVoteCount",
             "description": null,
             "args": [],
             "type": {
@@ -2968,13 +2968,25 @@
             "deprecationReason": null
           },
           {
-            "name": "optionOne",
+            "name": "prefix",
             "description": "column name",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "optionTwo",
+            "name": "prefixVoteCount",
+            "description": "column name",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "suffix",
+            "description": "column name",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "suffixVoteCount",
             "description": "column name",
             "isDeprecated": false,
             "deprecationReason": null
@@ -2987,18 +2999,6 @@
           },
           {
             "name": "user_id",
-            "description": "column name",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "voteOne",
-            "description": "column name",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "voteTwo",
             "description": "column name",
             "isDeprecated": false,
             "deprecationReason": null
@@ -3024,7 +3024,7 @@
             "deprecationReason": null
           },
           {
-            "name": "voteOne",
+            "name": "prefixVoteCount",
             "description": null,
             "args": [],
             "type": {
@@ -3036,7 +3036,7 @@
             "deprecationReason": null
           },
           {
-            "name": "voteTwo",
+            "name": "suffixVoteCount",
             "description": null,
             "args": [],
             "type": {
@@ -3071,7 +3071,7 @@
             "deprecationReason": null
           },
           {
-            "name": "voteOne",
+            "name": "prefixVoteCount",
             "description": null,
             "args": [],
             "type": {
@@ -3083,7 +3083,7 @@
             "deprecationReason": null
           },
           {
-            "name": "voteTwo",
+            "name": "suffixVoteCount",
             "description": null,
             "args": [],
             "type": {
@@ -3118,7 +3118,7 @@
             "deprecationReason": null
           },
           {
-            "name": "voteOne",
+            "name": "prefixVoteCount",
             "description": null,
             "args": [],
             "type": {
@@ -3130,7 +3130,7 @@
             "deprecationReason": null
           },
           {
-            "name": "voteTwo",
+            "name": "suffixVoteCount",
             "description": null,
             "args": [],
             "type": {
@@ -4911,7 +4911,7 @@
             "deprecationReason": null
           },
           {
-            "name": "voteOne",
+            "name": "prefixVoteCount",
             "description": null,
             "args": [],
             "type": {
@@ -4923,7 +4923,7 @@
             "deprecationReason": null
           },
           {
-            "name": "voteTwo",
+            "name": "suffixVoteCount",
             "description": null,
             "args": [],
             "type": {
