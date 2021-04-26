@@ -1,3 +1,7 @@
+:root {
+  --question-input-height: calc(var(--space--base) * 25)
+}
+
 .question {
   position: relative;
   display: flex;
@@ -11,7 +15,7 @@
 
 .or {
   position: absolute;
-  top: 50%;
+  top: calc(var(--question-input-height) / 2);
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -24,7 +28,7 @@
 .container {
   position: relative;
   background: var(--color--primary);
-  min-height: calc(var(--space--base) * 25);
+  min-height: var(--question-input-height);
   border-radius: var(--radii--large) 0 0 var(--radii--large);
 }
 
