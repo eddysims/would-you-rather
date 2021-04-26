@@ -7,3 +7,7 @@
 .profile {
   margin: var(--space--largest) 0;
 }
+
+.question {
+  margin: var(--space--largest) 0;
+}

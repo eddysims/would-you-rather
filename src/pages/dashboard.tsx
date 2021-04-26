@@ -6,6 +6,7 @@ import { Protected } from "@/components/Protected";
 import { Heading } from "@/components/Heading";
 import { Container } from "@/components/Container";
 import { Profile } from "@/components/Profile";
+import { Question } from "@/components/Question";
 import { DASHBOARD_QUERY } from "@/graphql/dashboardQuery";
 
 import { useEffect, useState } from "react";
@@ -43,7 +44,16 @@ function Dashboard() {
             <div className={styles.title}>
               <Heading as="h1">Dashboard</Heading>
             </div>
-            {user && <Profile user={user} />}
+            {user && (
+              <>
+                <Profile user={user} />
+                <div className={styles.question}>
+                  <Heading as="h2">Add A Question</Heading>
+                  <p>Would you rather</p>
+                  <Question user={user} />
+                </div>
+              </>
+            )}
           </Container>
         </Protected>
       </Layout>
