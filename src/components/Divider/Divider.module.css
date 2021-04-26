@@ -1,0 +1,6 @@
+.divider {
+  border: none;
+  border-top: var(--space--tiny) dashed var(--color--grey);
+  height: 0;
+  margin: var(--space--largest) 0;
+}

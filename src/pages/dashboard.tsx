@@ -7,6 +7,7 @@ import { Heading } from "@/components/Heading";
 import { Container } from "@/components/Container";
 import { Profile } from "@/components/Profile";
 import { Question } from "@/components/Question";
+import { Divider } from "@/components/Divider";
 import { DASHBOARD_QUERY } from "@/graphql/dashboardQuery";
 
 import { useEffect, useState } from "react";
@@ -47,11 +48,10 @@ function Dashboard() {
             {user && (
               <>
                 <Profile user={user} />
-                <div className={styles.question}>
-                  <Heading as="h2">Add A Question</Heading>
-                  <p>Would you rather</p>
-                  <Question user={user} />
-                </div>
+                <Divider />
+                <Heading as="h2">Add A Question</Heading>
+                <p>Would You Rather…</p>
+                <Question user={user} />
               </>
             )}
           </Container>

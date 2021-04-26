@@ -1,4 +1,5 @@
 :root {
+  --space--tiny: calc(var(--space--base) / 8);
   --space--smaller: calc(var(--space--base) / 4);
   --space--small: calc(var(--space--base) / 2);
   --space--base: 16px;
