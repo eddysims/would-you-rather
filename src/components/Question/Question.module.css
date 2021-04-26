@@ -1,8 +1,6 @@
-:root {
-  --question-input-height: calc(var(--space--base) * 25)
-}
-
 .question {
+  --question-input-height: calc(var(--space--base) * 25);
+
   position: relative;
   display: flex;
   gap: var(--space--smaller);
