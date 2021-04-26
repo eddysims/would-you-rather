@@ -227,6 +227,8 @@ export type Question = {
   suffix: Scalars['String'];
   suffixVoteCount: Scalars['Int'];
   updated_at: Scalars['timestamptz'];
+  /** An object relationship */
+  user?: Maybe<Users>;
   user_id?: Maybe<Scalars['String']>;
 };
 
@@ -280,6 +282,7 @@ export type Question_Bool_Exp = {
   suffix?: Maybe<String_Comparison_Exp>;
   suffixVoteCount?: Maybe<Int_Comparison_Exp>;
   updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+  user?: Maybe<Users_Bool_Exp>;
   user_id?: Maybe<String_Comparison_Exp>;
 };
 
@@ -305,6 +308,7 @@ export type Question_Insert_Input = {
   suffix?: Maybe<Scalars['String']>;
   suffixVoteCount?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
+  user?: Maybe<Users_Obj_Rel_Insert_Input>;
   user_id?: Maybe<Scalars['String']>;
 };
 
@@ -343,6 +347,13 @@ export type Question_Mutation_Response = {
   returning: Array<Question>;
 };
 
+/** input type for inserting object relation for remote table "question" */
+export type Question_Obj_Rel_Insert_Input = {
+  data: Question_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: Maybe<Question_On_Conflict>;
+};
+
 /** on conflict condition type for table "question" */
 export type Question_On_Conflict = {
   constraint: Question_Constraint;
@@ -359,6 +370,7 @@ export type Question_Order_By = {
   suffix?: Maybe<Order_By>;
   suffixVoteCount?: Maybe<Order_By>;
   updated_at?: Maybe<Order_By>;
+  user?: Maybe<Users_Order_By>;
   user_id?: Maybe<Order_By>;
 };
 
@@ -586,6 +598,8 @@ export type Users = {
   name: Scalars['String'];
   nickname?: Maybe<Scalars['String']>;
   provider: Scalars['String'];
+  /** An object relationship */
+  questions?: Maybe<Question>;
   updatedAt: Scalars['timestamptz'];
 };
 
@@ -622,6 +636,7 @@ export type Users_Bool_Exp = {
   name?: Maybe<String_Comparison_Exp>;
   nickname?: Maybe<String_Comparison_Exp>;
   provider?: Maybe<String_Comparison_Exp>;
+  questions?: Maybe<Question_Bool_Exp>;
   updatedAt?: Maybe<Timestamptz_Comparison_Exp>;
 };
 
@@ -644,6 +659,7 @@ export type Users_Insert_Input = {
   name?: Maybe<Scalars['String']>;
   nickname?: Maybe<Scalars['String']>;
   provider?: Maybe<Scalars['String']>;
+  questions?: Maybe<Question_Obj_Rel_Insert_Input>;
   updatedAt?: Maybe<Scalars['timestamptz']>;
 };
 
@@ -682,6 +698,13 @@ export type Users_Mutation_Response = {
   returning: Array<Users>;
 };
 
+/** input type for inserting object relation for remote table "users" */
+export type Users_Obj_Rel_Insert_Input = {
+  data: Users_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: Maybe<Users_On_Conflict>;
+};
+
 /** on conflict condition type for table "users" */
 export type Users_On_Conflict = {
   constraint: Users_Constraint;
@@ -697,6 +720,7 @@ export type Users_Order_By = {
   name?: Maybe<Order_By>;
   nickname?: Maybe<Order_By>;
   provider?: Maybe<Order_By>;
+  questions?: Maybe<Question_Order_By>;
   updatedAt?: Maybe<Order_By>;
 };
 
@@ -802,6 +826,26 @@ export type UpdateUserProfileMutation = (
   )> }
 );
 
+export type QuestionDataFragment = (
+  { __typename?: 'users' }
+  & Pick<Users, 'id'>
+);
+
+export type CreateQuestionMutationVariables = Exact<{
+  uid: Scalars['String'];
+  prefix: Scalars['String'];
+  suffix: Scalars['String'];
+}>;
+
+
+export type CreateQuestionMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_question_one?: Maybe<(
+    { __typename?: 'question' }
+    & Pick<Question, 'id'>
+  )> }
+);
+
 export type AddUserMutationVariables = Exact<{
   id: Scalars['String'];
   name: Scalars['String'];
@@ -825,6 +869,11 @@ export const ProfileDataFragmentDoc = gql`
   provider
   nickname
   avatarUrl
+}
+    `;
+export const QuestionDataFragmentDoc = gql`
+    fragment questionData on users {
+  id
 }
     `;
 export const GetTotalCountsDocument = gql`
@@ -908,6 +957,41 @@ export function useUpdateUserProfileMutation(baseOptions?: Apollo.MutationHookOp
 export type UpdateUserProfileMutationHookResult = ReturnType<typeof useUpdateUserProfileMutation>;
 export type UpdateUserProfileMutationResult = Apollo.MutationResult<UpdateUserProfileMutation>;
 export type UpdateUserProfileMutationOptions = Apollo.BaseMutationOptions<UpdateUserProfileMutation, UpdateUserProfileMutationVariables>;
+export const CreateQuestionDocument = gql`
+    mutation createQuestion($uid: String!, $prefix: String!, $suffix: String!) {
+  insert_question_one(object: {prefix: $prefix, suffix: $suffix, user_id: $uid}) {
+    id
+  }
+}
+    `;
+export type CreateQuestionMutationFn = Apollo.MutationFunction<CreateQuestionMutation, CreateQuestionMutationVariables>;
+
+/**
+ * __useCreateQuestionMutation__
+ *
+ * To run a mutation, you first call `useCreateQuestionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateQuestionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createQuestionMutation, { data, loading, error }] = useCreateQuestionMutation({
+ *   variables: {
+ *      uid: // value for 'uid'
+ *      prefix: // value for 'prefix'
+ *      suffix: // value for 'suffix'
+ *   },
+ * });
+ */
+export function useCreateQuestionMutation(baseOptions?: Apollo.MutationHookOptions<CreateQuestionMutation, CreateQuestionMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateQuestionMutation, CreateQuestionMutationVariables>(CreateQuestionDocument, options);
+      }
+export type CreateQuestionMutationHookResult = ReturnType<typeof useCreateQuestionMutation>;
+export type CreateQuestionMutationResult = Apollo.MutationResult<CreateQuestionMutation>;
+export type CreateQuestionMutationOptions = Apollo.BaseMutationOptions<CreateQuestionMutation, CreateQuestionMutationVariables>;
 export const AddUserDocument = gql`
     mutation addUser($id: String!, $name: String!, $avatar: String, $provider: String!) {
   insert_users_one(

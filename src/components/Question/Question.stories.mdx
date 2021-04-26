@@ -1,0 +1,29 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs/blocks";
+import { Question } from ".";
+
+<Meta title="components/Question" component={Question} />
+
+# Question
+
+## Usage
+
+```tsx
+import { Question } from "@/components/Question";
+```
+
+## Props
+
+<ArgsTable component={Question} />
+
+## Example
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      user: { id: 100 },
+    }}
+  >
+    {(args) => <Question {...args} />}
+  </Story>
+</Canvas>
